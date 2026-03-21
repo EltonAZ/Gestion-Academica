@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h2>Panel del Administrador</h2>
+
+    <!-- Sección de Estudiantes -->
+        <section>
+            <h3>Gestión de Estudiantes</h3>
+            <form id="formEstudiante">
+                <input type="text" id="nombreEst" placeholder="Nombre" required>
+                <input type="text" id="apellidoEst" placeholder="Apellido" required>
+                <input type="email" id="correoEst" placeholder="Correo" required>
+            <button type="submit">Registrar Estudiante</button>
+            </form>
+            <table id="tablaEstudiantes">
+                <thead>
+                    <tr>                               
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Sección de Cursos -->
+        <section>
+            <h3>Gestión de Cursos</h3>
+            <form id="formCurso">
+                <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
+                <input type="text" id="codigoCurso" placeholder="Código" required>
+                <button type="submit">Registrar Curso</button>
+            </form>
+            <table id="tablaCursos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Código</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+    </div>
+    
+    <script src="script-admin.js"></script>
+    
+</body>
+</html>

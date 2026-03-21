@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Docente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="docente-container">
+        <h2>Panel Docente</h2>
+
+        <h3>Registrar Nota</h3>
+        <form action="" id="formNota">
+            <input type="text" id="nombreEstudiante" placeholder="Nombre del estudiante" required>
+            <input type="text" id="nombreCurso" placeholder="Curso" required>
+            <input type="number" id="nota" placeholder="Nota" required>
+            <button type="submit">Registrar Nota</button>
+
+            <table id="tablaNotas">
+                <thead>
+                    <tr>
+                        <th>Estudiante</th>
+                        <th>Curso</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </form>
+    </div>
+
+    <script src="script-docente.js"></script>
+    
+</body>
+</html>
