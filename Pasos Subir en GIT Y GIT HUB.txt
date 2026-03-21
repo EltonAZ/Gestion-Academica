@@ -1,0 +1,43 @@
+✅ 1. Crear un nuevo repositorio en GitHub
+
+✅ 2. Abrir Git Bash y entrar a la carpeta
+cd "D:/ARCHIVOS ELTON/..."
+🔹 ¿Qué hace?
+Cambia el directorio de trabajo a donde está tu archivo. Así, Git trabajará dentro de esa carpeta.
+
+✅ 3. Inicializar Git en esa carpeta
+git init
+🔹 ¿Qué hace?
+Crea un repositorio local dentro de esa carpeta. Ahora Git comenzará a rastrear cambios en los archivos que agregues.
+
+✅ 4. Agregar el archivo Excel al control de Git
+git add NOMBRE ARCHIVO
+🔹 ¿Qué hace?
+Le dice a Git: “quiero incluir estos archivos en el próximo commit”.
+El . significa “todos los archivos nuevos o modificados”.
+
+✅ 5. Guardar el cambio con un mensaje
+git commit -m "Agregando archivo Excel"
+🔹 ¿Qué hace?
+Guarda una versión local del proyecto con ese mensaje.
+Piensa en esto como una foto o checkpoint del estado actual.
+
+✅ 6. Conectar el repositorio local con GitHub
+git remote add origin https://github.com/EltonAZ/Cuentas.git
+🔹 ¿Qué hace?
+Conecta tu carpeta con el repositorio de GitHub.
+origin es el nombre por defecto para el repositorio remoto.
+
+✅ 7. Enviar (subir) los cambios a GitHub
+git push -u origin main
+🔹 ¿Qué hace?
+Envía el commit que hiciste a la rama main en GitHub.
+El -u también le dice a Git: “esta será la rama principal para futuros pushes”.
+
+-----------
+PARA SUBIR MODIFICACIONES:
+-> git add nomrebarchivo
+-> git add .
+->git remote -m "Modificado"
+git push origin master
+
