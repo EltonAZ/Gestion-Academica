@@ -38,6 +38,6 @@ El -u también le dice a Git: “esta será la rama principal para futuros pushe
 PARA SUBIR MODIFICACIONES:
 -> git add nomrebarchivo
 -> git add .
-->git remote -m "Modificado"
-git push origin master
+->git commit -m "Modificado"
+git push origin master o main
 

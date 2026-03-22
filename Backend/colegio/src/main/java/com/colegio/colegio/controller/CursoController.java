@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cursos")
+@CrossOrigin(origins = "*")
 public class CursoController {
 
     private final CursoRepository cursoRepository;

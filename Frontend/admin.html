@@ -14,9 +14,9 @@
         <section>
             <h3>Gestión de Estudiantes</h3>
             <form id="formEstudiante">
-                <input type="text" id="nombreEst" placeholder="Nombre" required>
-                <input type="text" id="apellidoEst" placeholder="Apellido" required>
-                <input type="email" id="correoEst" placeholder="Correo" required>
+                <input type="text" id="nombreEstudiante" placeholder="Nombre" required>
+                <input type="text" id="apellidoEstudiante" placeholder="Apellido" required>
+                <input type="email" id="correoEstudiante" placeholder="Correo" required>
             <button type="submit">Registrar Estudiante</button>
             </form>
             <table id="tablaEstudiantes">
@@ -36,14 +36,37 @@
             <h3>Gestión de Cursos</h3>
             <form id="formCurso">
                 <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
-                <input type="text" id="codigoCurso" placeholder="Código" required>
+                <input type="text" id="descripcionCurso" placeholder="Descripcion del Curso" required>
                 <button type="submit">Registrar Curso</button>
             </form>
             <table id="tablaCursos">
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Código</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Sección de Docentes -->
+        <section>
+            <h3>Gestión de Docentes</h3>
+            <form id="formDocente">
+                <input type="text" id="nombreDocente" placeholder="Nombre del Docente" required>
+                <input type="text" id="apellidoDocente" placeholder="Apellido del Docente" required>
+                <input type="email" id="correoDocente" placeholder="Correo del Docente" required>
+                <button type="submit">Registrar Docente</button>
+            </form>
+            <table id="tablaDocentes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Curso Asignado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

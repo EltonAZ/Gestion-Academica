@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notas")
+@CrossOrigin(origins = "*")
 public class NotaController {
     private final NotaRepository notaRepository;
 

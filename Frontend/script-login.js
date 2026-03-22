@@ -10,15 +10,29 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value; 
 
-  // Simulación de roles (esto luego se conectará al backend)
-  if(email === "admin@elitec.edu" && password === "1234") {
-    window.location.href = "admin.html";
-  } else if(email === "docente@elitec.edu" && password === "1234") {
-    window.location.href = "docente.html";
-  } else if(email === "estudiante@elitec.edu" && password === "1234") {
-    window.location.href = "estudiante.html";
-  } else {
-      // Si las credenciales no coinciden, muestra un mensaje de error
-      document.getElementById("errorMsg").textContent = "Credenciales inválidas";
-  }
+  fetch("http://localhost:8080/login", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({email: email, password: password})
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Credenciales invalidas");
+    }
+    return response.json();
+  })
+  .then(data => {
+    //Redirigir segun el rol
+    if (data.rol === "admin") {
+      window.location.href = "admin.html";
+    } else if (data.rol === "docente") {
+      window.location.href = "docente.html";
+    }else if (data.rol === "estudiante") {
+      window.location.href = "estudiante.html";
+    }
+  })
+  .catch(error => {
+    document.getElementById("errorMsg").textContent = "Correo o contraseña incorrectos";
+    console.error(error);
+  }); 
 });
