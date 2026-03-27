@@ -1,7 +1,9 @@
 package com.colegio.colegio.controller;
 
 import com.colegio.colegio.entity.Curso;
+import com.colegio.colegio.entity.Estudiante;
 import com.colegio.colegio.repository.CursoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,19 +13,31 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CursoController {
 
-    private final CursoRepository cursoRepository;
+    @Autowired
+    private CursoRepository cursoRepo;
 
-    public CursoController(CursoRepository cursoRepository) {
-        this.cursoRepository = cursoRepository;
-    }
+    @Autowired
+    private CursoRepository repo;
 
     @GetMapping
     public List<Curso> listar() {
-        return cursoRepository.findAll();
+        return repo.findAll();
     }
 
     @PostMapping
-    public Curso crear(@RequestBody Curso curso) {
-        return cursoRepository.save(curso);
+    public Curso registrar(@RequestBody Curso curso) {
+        return repo.save(curso);
     }
+
+    //
+    @GetMapping("/{cursoId}/estudiantes")
+    public List<Estudiante> listarEstudiantesCurso(@PathVariable Long cursoId) {
+        Curso curso = cursoRepo.findById(cursoId)
+                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
+        return curso.getEstudiantes();
+    }
+
+
+
+
 }

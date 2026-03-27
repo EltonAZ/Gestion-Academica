@@ -3,36 +3,60 @@
     Pagina index 
     ===============================   */
 // Captura el evento "submit" del formulario de login
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // Evita que la página se recargue al enviar el formulario
+document.getElementById("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const usuario = {
+    email: document.getElementById("loginEmail").value,
+    password: document.getElementById("loginPassword").value
+  };
 
-  // Obtiene los valores ingresados por el usuario
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value; 
-
-  fetch("http://localhost:8080/login", {
+  fetch("http://localhost:8080/usuarios/login", {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({email: email, password: password})
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(usuario)
   })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Credenciales invalidas");
-    }
-    return response.json();
+  .then(res => {
+    if (!res.ok) throw new Error("Credenciales inválidas");
+    return res.json();
   })
   .then(data => {
-    //Redirigir segun el rol
-    if (data.rol === "admin") {
+    // Limpiar mensaje de error si el login fue exitoso
+    document.getElementById("errorMsg").textContent = "";
+
+    // Guardar ID del usuario en localStorage (para estudiante)
+    localStorage.setItem("usuarioId", data.id);
+
+    // Redirigir según el rol
+    if (data.rol === "ADMIN") {
       window.location.href = "admin.html";
-    } else if (data.rol === "docente") {
+    } else if (data.rol === "DOCENTE") {
       window.location.href = "docente.html";
-    }else if (data.rol === "estudiante") {
+    } else {
       window.location.href = "estudiante.html";
     }
   })
-  .catch(error => {
-    document.getElementById("errorMsg").textContent = "Correo o contraseña incorrectos";
-    console.error(error);
-  }); 
+  .catch(err => {
+    // Mostrar error en el párrafo
+    document.getElementById("errorMsg").textContent = err.message;
+  });
 });
+
+
+
+//Validar el usuario y guardar sesion en localstogare
+// Esto es para usar el boton salir
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const correo = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  // Usuario admin
+  if (correo === "admin@colegio.com" && password === "1234") {
+    localStorage.setItem("usuarioActivo", correo); // guarda sesión
+    window.location.href = "admin.html"; // redirige al panel
+  } else {
+    alert("Credenciales incorrectas");
+  }
+});
+

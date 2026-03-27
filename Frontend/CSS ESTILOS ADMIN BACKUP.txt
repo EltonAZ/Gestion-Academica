@@ -1,0 +1,108 @@
+/*  =========================
+    Pagina Administrador
+    =========================    */
+/* Estilo general de la página */
+/* Contenedor principal del panel administrador */
+.admin-container {
+    width: 90%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+/* Secciones dentro del panel */
+.admin-container section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+
+/* Títulos */
+.admin-container h2 {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 25px;
+}
+.admin-container h3 {
+    margin-bottom: 15px;
+    color: #333;
+    border-left: 4px solid #28a745;
+    padding-left: 8px;
+}
+
+/* Formularios del administrador */
+.admin-container form {
+    display: flex;
+    gap: 10px;              /* Espacio entre inputs */
+    flex-wrap: wrap;        /* Permite que los inputs bajen si no caben */
+    margin-bottom: 15px;
+    align-items: center;
+
+}
+.admin-container input {
+    flex: 1;                /* Ocupa espacio proporcional */
+    min-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+.admin-container input:focus,
+.admin-container select:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 5px rgba(40,167,69,0.3);
+}
+.admin-container button {
+    flex: 0 0 auto;         /* Botón con tamaño fijo */
+    background: #28a745;    /* Verde para diferenciar del login */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.admin-container button:hover {
+    background: #1e7e34;    /* Verde más oscuro al pasar el mouse */
+}
+
+/* Tablas del administrador */
+.admin-container table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+.admin-container th, .admin-container td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+.admin-container th {
+    background: #28a745;    /* Encabezado verde */
+    color: white;
+}
+
+/* Check Box */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* dos columnas */
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+  margin-top: 10px;
+}
+
+.cursos-grid label {
+  background: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+}

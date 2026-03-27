@@ -7,46 +7,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="estudiante-container">
+    <div class="estudiante-panel">
         <h2>Panel Estudiante</h2>
 
-        <h3>Mis Notas</h3>
-        <table id="tablaNotasEstudiante">
-            <thead>
-                <tr>
-                    <th>Curso</th>
-                    <th>Nota</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Espacio donde se mostrará las notas-->
-            </tbody>
-        </table>
-    </div>
-    
+        <!-- Cursos inscritos -->
+        <section class="estudiante-cursos">
+            <h3>Mis cursos</h3>
+            <table class="Tabla-cursos">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="listaCursosEstudiante"></tbody>
+                <!-- Aquí se cargan los cursos del estudiante -->
+            </table>
+        </section>
 
-    <script>
-        fetch("http://localhost:8080/estudiantes")
-        .then(Response=> response.json())
-        .then(data => {
-            const tbody = document.querySelector("#tablaNotasEstudiante tbody");
-            tbody.innerHTML = "";
-            data.forEach(est => {
-                const fila = `
-                <tr>
-                    <td>${est.id}</td>
-                    <td>${est.nombre}</td>
-                    <td>${est.apellido}</td>
-                    <td>${est.email}</td>      
-                </tr>
-            `;
-            tbody.innerHTML += fila;
-            });
-        })
-        .catch(error => console.error("Error al cargar:", error));
-    </script>
+        <!-- Notas del curso seleccionado -->
+        <section class="estudiante-notas">
+            <h3>Mis Notas</h3>
+            <table class="tabla-notas">
+                <thead>
+                    <tr>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Promedio</th>
+                    </tr>
+                </thead>
+                <tbody id="detalleNotas">
+                    <!-- Aquí se cargan las notas del curso -->
+                </tbody>
+            </table>
+        </section>
+    </div>
 
     <script src="script-estudiante.js"></script>
+    
     
 </body>
 </html>

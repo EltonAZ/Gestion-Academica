@@ -1,6 +1,7 @@
 /*  =========================
     Pagina Index
     =========================    */
+
 /* Estilo general para todo el sistema */
 body {
     font-family: Arial, sans-serif;
@@ -9,7 +10,96 @@ body {
     padding: 0;
 }
 
-/* Contenedor exclusivo del login */
+
+/* =======================
+/*Estilos para el Body Login*/
+body.login-page {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrapper {
+  display: flex;
+  width: 900px;
+  height: 500px; /* altura fija para balancear */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+
+}
+
+/* Columna izquierda */
+.login-left {
+  flex: 1;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+  align-items: center;     /* centra horizontalmente */
+  text-align: center;
+
+}
+
+/* Columna derecha */
+.login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra verticalmente */
+}
+.login-right h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+.login-right input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.login-right input:focus {
+  border-color: #6a11cb;
+}
+
+.login-right button {
+  width: 100%;
+  padding: 12px;
+  background: #6a11cb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.login-right button:hover {
+  background: #2575fc;
+}
+#errorMsg {
+  color: red;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+/*
+
+/* Contenedor exclusivo del login 
 .login-container {
   max-width: 300px;
   margin: 100px auto;
@@ -17,18 +107,19 @@ body {
   background: white;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  box-sizing: border-box; /* Evita que padding expanda el contenedor */
-}
+  box-sizing: border-box; /* Evita que padding expanda el contenedor 
+} /*
+
 .login-container h2 {
     text-align: center;
     margin-bottom: 15px;
     color: #007bff;
 }
 
-/* Formularios dentro del login */
+/* Formularios dentro del login 
 .login-container form {
     display: flex;
-    flex-direction: column; /* Inputs y boton en columna */
+    flex-direction: column; /* Inputs y boton en columna 
     
 }
 
@@ -39,10 +130,10 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+    box-sizing: border-box; /* Evita que el padding rompa el ancho 
 } 
 
-/* Botón del login */
+/* Botón del login 
 .login-container button {
     background: #007BFF;
     color: white;
@@ -52,187 +143,386 @@ body {
 
 .login-container button:hover {
     background: #0056b3;
-}
+}            
+    */
+     
 
 
 /*  =========================
     Pagina Administrador
     =========================    */
 /* Estilo general de la página */
-/* Contenedor principal del panel administrador */
-.admin-container {
-    width: 90%;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #ccc;
+/* General */
+
+body.admin-page {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
 }
 
-/* Secciones dentro del panel */
-.admin-container section {
-    margin-bottom: 30px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background: #f9f9f9;
-}
-
-/* Formularios del administrador */
-.admin-container form {
+.admin-wrapper {
     display: flex;
-    gap: 10px;              /* Espacio entre inputs */
-    flex-wrap: wrap;        /* Permite que los inputs bajen si no caben */
-}
-.admin-container input {
-    flex: 1;                /* Ocupa espacio proporcional */
-    min-width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px;
-}
-.admin-container button {
-    flex: 0 0 auto;         /* Botón con tamaño fijo */
-    background: #28a745;    /* Verde para diferenciar del login */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.admin-container button:hover {
-    background: #1e7e34;    /* Verde más oscuro al pasar el mouse */
+    height: 100vh;
+
 }
 
-/* Tablas del administrador */
-.admin-container table {
-    width: 100%;
-    margin-top: 15px;
-    border-collapse: collapse;
-}
-.admin-container th, .admin-container td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-}
-.admin-container th {
-    background: #28a745;    /* Encabezado verde */
-    color: white;
-}
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-/*  =========================
-    Pagina Docente
-    =========================    */
-
-/* --- Docente --- */
-.docente-container {
-    max-width: 800px;
-    margin: auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
-.docente-container h2 {
+.sidebar ul li a.active {
+    background: rgba(255,255,255,0.3);
+    color: #ffd700;
+    font-weight: bold;
+}
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 22px;
     text-align: center;
-    margin-bottom: 20px;
-    color: #007bff;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 25px;
+
+
 }
-.docente-container h3 {
-    margin: 20px 0 10px;
-    color: #333;
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
 }
 
-/* --- Formulario de notas --- */
-#formNota {
-  background: #f9f9f9;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 25px;
+.sidebar ul li {
+    margin: 20px 0;
 }
-#formNota input {
+.sidebar ul li a i {
+    font-size: 18px;    /* tamaño uniforme de íconos */
+    min-width: 20px;    /* reserva espacio para que todos queden alineados */
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+}
+.sidebar ul li a:hover {
+    background: rgba(255,255,255,0.2);
+    color: #ffd700;
+
+}
+#btnSalir {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+#btnSalir:hover {
+    background: #cc0000;
+}
+
+/* Área principal */
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: #f5f6fa;
+    overflow-y: auto;
+
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+}
+header h1 {
+    font-size: 28px;
+    color: #333;
+
+}
+
+/* Contenedor de secciones */
+.admin-container section {
+    margin-bottom: 40px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+}
+.admin-container h3 {
+    margin-bottom: 20px;
+    color: #444;
+    border-bottom: 2px solid #6a11cb;
+    padding-bottom: 8px;
+}
+
+/* Formularios */
+.formulario input,
+.formulario button {
+    display: block;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 14px;
 }
-#formNota input:focus {
-    border-color: #007bff;
+.formulario input:focus {
+    border-color: #6a11cb;
     outline: none;
 }
-#formNota button {
-    width: 100%;
-    padding: 12px;
-    background: #007bff;
+.formulario button {
+    background: #6a11cb;
     color: #fff;
-    font-weight: bold;
     border: none;
-    border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.3s;
+
 }
-#formNota button:hover {
-    background: #0056b3;
+.formulario button:hover {
+    background: #2575fc;
 }
 
-/* --- Tabla de notas --- */
-#tablaNotas {
+/* Tablas */
+.tabla {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+
 }
-#tablaNotas thead {
-    background: #007bff;
+.tabla th, .tabla td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.tabla th {
+    background: #6a11cb;
     color: #fff;
 }
-#tablaNotas th, #tablaNotas td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
+
+.tabla tr:nth-child(even) {
+    background: #f9f9f9;
 }
-#tablaNotas tr:nth-child(even) {
-    background: #f2f2f2;
+
+.tabla tr:hover {
+    background: #eef;
 }
+
+/* Botones de acción dentro de tablas */
+.btn-editar {
+    background: #2575fc;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-eliminar {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-editar:hover { background: #1a5edb; }
+.btn-eliminar:hover { background: #cc0000; }
+
+/*Para check box que lo genera el script */
+.opcion {
+  display: flex;
+  justify-content: space-between; /* nombre a la izquierda, checkbox a la derecha */
+  align-items: center;
+  margin-bottom: 6px;
+}
+#cursosEstudiante input[type="checkbox"],
+#cursosDocente input[type="checkbox"] {
+  display: block;
+  margin-left: auto;    /* empuja los checkboxes a la derecha */
+}
+
+
+
+
+
+/*  =========================
+    Panel Docente
+    =========================    */
+
+/* Contenedor principal */
+.docente-panel {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Títulos */
+.docente-panel h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.docente-panel h3 {
+  font-size: 1.4rem;
+  color: #34495e;
+  margin: 15px 0;
+  border-left: 4px solid #3498db;
+  padding-left: 8px;
+}
+
+/* Tablas generales */
+.docente-panel table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 0.95rem;
+}
+.docente-panel th, 
+.docente-panel td {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  text-align: center;
+}
+.docente-panel th {
+  background: #3498db;
+  color: #fff;
+  font-weight: 600;
+}
+.docente-panel tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* Botones */
+.docente-panel button {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.docente-panel button:hover {
+  background: #2980b9;
+}
+
+/* Inputs de notas */
+.docente-panel input[type="number"] {
+  width: 70px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.docente-panel input[readonly] {
+  background: #f0f0f0;
+  color: #555;
+}
+
+/* Secciones */
+.docente-cursos, 
+.docente-estudiantes {
+  margin-bottom: 25px;
+}
+
+/* Animación suave al cargar */
+.docente-panel tbody tr {
+  transition: background 0.2s ease;
+}
+.docente-panel tbody tr:hover {
+  background: #ecf6ff;
+}
+
 
 /*  =========================
     Pagina Estudiante
     =========================    */
 
 /* --- Panel Estudiante --- */
-.estudiante-container {
-    max-width: 600px;
-    margin: auto;
+.estudiante-panel {
+    max-width: 900px;
+    margin: 30px auto;
     background: #ffffff;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
-.estudiante-container h3 {
-    margin: 20px 0 10px;
-    color: #333;
-    font-size: 1.2rem;
+
+/* Títulos */
+.estudiante-panel h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.estudiante-panel h3 {
+    color: #34495e;
+    margin-bottom: 10px;
 }
 
-/* --- Tabla de notas estudiante --- */
-#tablaNotasEstudiante {
+/* Tablas */
+.estudiante-panel table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
-#tablaNotasEstudiante thead {
-    background: #007bff;
+.estudiante-panel thead {
+    background-color: #2c3e50;
     color: #fff;
 }
-#tablaNotasEstudiante th, #tablaNotasEstudiante td {
-    padding: 12px;
-    border: 1px solid #ddd;
+.estudiante-panel th,
+.estudiante-panel td {
+    padding: 10px;
     text-align: left;
+    border-bottom: 1px solid #ddd;
 }
-#tablaNotasEstudiante tr:nth-child(even) {
-    background: #f2f2f2;
+
+/* Botones */
+.estudiante-panel button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
+.estudiante-panel button:hover {
+    background-color: #2980b9;
+}
+
+/* Promedio destacado */
+.estudiante-panel .tabla-notas td:last-child {
+    font-weight: bold;
+    color: #27ae60;
+}
+
 
 
 

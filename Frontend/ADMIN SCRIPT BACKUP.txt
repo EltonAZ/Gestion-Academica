@@ -7,14 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
   cargarCursos();
   cargarDocentes();
 
-//Sidebar activar o resaltar
-document.querySelectorAll('.sidebar ul li a').forEach(link => {
-  link.addEventListener('click', function() {
-    document.querySelectorAll('.sidebar ul li a').forEach(el => el.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
   // --- Registrar Estudiante ---
   document.getElementById("formEstudiante").addEventListener("submit", e => {
     e.preventDefault();
@@ -167,61 +159,22 @@ function cargarCursos() {
         const fila = tbody.insertRow();
         fila.innerHTML = `<td>${curso.nombre}</td><td>${curso.descripcion}</td>`;
 
-        // === Checkbox para docentes ===
-        const divDocente = document.createElement("div");
-        divDocente.classList.add("opcion");
-
+        // Checkbox para docentes
         const labelDocente = document.createElement("label");
-        labelDocente.textContent = curso.nombre;
-        labelDocente.setAttribute("for", "docente-" + curso.id);
+        labelDocente.innerHTML = `<input type="checkbox" value="${curso.id}" 
+            data-nombre="${curso.nombre}" data-descripcion="${curso.descripcion}"> ${curso.nombre}`;
+        contenedorDocente.appendChild(labelDocente);
 
-        const checkboxDocente = document.createElement("input");
-        checkboxDocente.type = "checkbox";
-        checkboxDocente.value = curso.id;
-        checkboxDocente.id = "docente-" + curso.id;
-
-        // Primero el nombre, luego el checkbox
-        divDocente.appendChild(labelDocente);
-        divDocente.appendChild(checkboxDocente);
-        contenedorDocente.appendChild(divDocente);
-
-        // === Checkbox para estudiantes ===
-        const divEstudiante = document.createElement("div");
-        divEstudiante.classList.add("opcion");
-
+        // Checkbox para estudiantes
         const labelEstudiante = document.createElement("label");
-        labelEstudiante.textContent = curso.nombre;
-        labelEstudiante.setAttribute("for", "estudiante-" + curso.id);
-
-        const checkboxEstudiante = document.createElement("input");
-        checkboxEstudiante.type = "checkbox";
-        checkboxEstudiante.value = curso.id;
-        checkboxEstudiante.id = "estudiante-" + curso.id;
-
-        divEstudiante.appendChild(labelEstudiante);
-        divEstudiante.appendChild(checkboxEstudiante);
-        contenedorEstudiante.appendChild(divEstudiante);
+        labelEstudiante.innerHTML = `<input type="checkbox" value="${curso.id}" 
+            data-nombre="${curso.nombre}" data-descripcion="${curso.descripcion}"> ${curso.nombre}`;
+        contenedorEstudiante.appendChild(labelEstudiante);
 
       });
     })
     .catch(err => console.error("Error cargando cursos:", err));
-
-
 }
-
-
-// SCRIPT PARA EL BOTON SALIR
-// Al cargar el panel, validar si hay sesión
-if (!localStorage.getItem("usuarioActivo")) {
-  window.location.href = "index.html"; // si no hay sesión, vuelve al index
-}
-
-// Botón salir
-document.getElementById('btnSalir').addEventListener('click', function() {
-  localStorage.removeItem('usuarioActivo'); // borra la sesión
-  window.location.href = "index.html";      // redirige al index
-});
-
 
 
 

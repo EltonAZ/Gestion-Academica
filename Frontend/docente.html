@@ -7,27 +7,54 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="docente-container">
+    <div class="docente-panel">
         <h2>Panel Docente</h2>
 
-        <h3>Registrar Nota</h3>
-        <form action="" id="formNota">
-            <input type="text" id="nombreEstudiante" placeholder="Nombre del estudiante" required>
-            <input type="text" id="nombreCurso" placeholder="Curso" required>
-            <input type="number" id="nota" placeholder="Nota" required>
-            <button type="submit">Registrar Nota</button>
-
-            <table id="tablaNotas">
+        <!-- Cursos asignados -->
+        <section class="docente-cursos">
+            <h3>Mis Cursos</h3>
+            <table class="tabla-cursos">
                 <thead>
                     <tr>
-                        <th>Estudiante</th>
-                        <th>Curso</th>
-                        <th>Nota</th>
+                    <th>Curso</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="listaCursos">
+                    <!-- Aquí se cargan los cursos del docente -->
+                    <!-- Ejemplo dinámico:
+                    <tr>
+                    <td>Matemáticas</td>
+                    <td>Álgebra básica</td>
+                    <td><button class="btn-ver-estudiantes" data-curso="1">Ver estudiantes</button></td>
+                    </tr>
+                    -->
+                </tbody>
             </table>
-        </form>
+        </section>
+
+        <!-- Estudiantes del curso seleccionado -->
+        <section class="docente-estudiantes">
+            <h3>Estudiantes del Curso</h3>
+            <table class="tabla-estudiantes">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Promedio</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="listaEstudiantes">
+                    
+                </tbody>
+            </table>
+        </section>
+        
     </div>
 
     <script src="script-docente.js"></script>

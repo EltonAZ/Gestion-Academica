@@ -5,75 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Administrador</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
-    <div class="admin-container">
-        <h2>Panel del Administrador</h2>
+<body class="admin-page">
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Sistema Académico</h2>
+            <ul>
+                <li><a href="#estudiantes" class="active"><i class="fas fa-user-graduate"></i>Estudiantes</a></li>
+                <li><a href="#docentes"><i class="fas fa-chalkboard-teacher"></i>Docentes</a></li>
+                <li><a href="#cursos"><i class="fas fa-book"></i>Cursos</a></li>
+                <li><a href="#notas"><i class="fas fa-clipboard-list"></i>Notas</a></li>
+                <li><a href="#config"><i class="fas fa-cog"></i>Configuración</a></li>
+            </ul>
+            <button id="btnSalir"><i class="fas fa-power-off"></i> Salir</button>
+        </aside>
 
-    <!-- Sección de Estudiantes -->
-        <section>
-            <h3>Gestión de Estudiantes</h3>
-            <form id="formEstudiante">
-                <input type="text" id="nombreEstudiante" placeholder="Nombre" required>
-                <input type="text" id="apellidoEstudiante" placeholder="Apellido" required>
-                <input type="email" id="correoEstudiante" placeholder="Correo" required>
-            <button type="submit">Registrar Estudiante</button>
-            </form>
-            <table id="tablaEstudiantes">
-                <thead>
-                    <tr>                               
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
 
-        <!-- Sección de Cursos -->
-        <section>
-            <h3>Gestión de Cursos</h3>
-            <form id="formCurso">
-                <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
-                <input type="text" id="descripcionCurso" placeholder="Descripcion del Curso" required>
-                <button type="submit">Registrar Curso</button>
-            </form>
-            <table id="tablaCursos">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripcion</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
+        <!-- Area Principal -->
+        <main class="main-content">
+            <header>
+                <h1>Panel del Administrador</h1>
+                <span>Bienvenido, Admin</span>
+            </header>
 
-        <!-- Sección de Docentes -->
-        <section>
-            <h3>Gestión de Docentes</h3>
-            <form id="formDocente">
-                <input type="text" id="nombreDocente" placeholder="Nombre del Docente" required>
-                <input type="text" id="apellidoDocente" placeholder="Apellido del Docente" required>
-                <input type="email" id="correoDocente" placeholder="Correo del Docente" required>
-                <button type="submit">Registrar Docente</button>
-            </form>
-            <table id="tablaDocentes">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>Curso Asignado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </section>
+            <div class="admin-container">
+                
+                <!--Seccion de Estudiantes-->
+                <section id="estudiantes">
+                    <h3>Gestión de Estudiantes</h3>
+                    <form id="formEstudiante" class="formulario">
+                        <input type="text" id="nombreEstudiante" placeholder="Nombre" required>
+                        <input type="text" id="apellidoEstudiante" placeholder="Apellido" required>
+                        <input type="email" id="correoEstudiante" placeholder="Correo" required>
+                        <input type="password" id="passwordEstudiante" placeholder="Password" required>
 
-    </div>
+                        <label for="">Cursos</label>
+                        <div id="cursosEstudiante" class="cursos-grid"></div>
+
+                        <button type="submit">Registrar Estudiante</button>
+                    </form>
+
+                    <table id="tablaEstudiantes" class="tabla">
+                        <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Correo</th>
+                            <th>Cursos Asignados</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </section>
+
+                <!-- Sección de Cursos-->
+                <section id="cursos">
+                    <h3>Gestión de Cursos</h3>
+                    <form id="formCurso" class="formulario">
+                        <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
+                        <input type="text" id="descripcionCurso" placeholder="Descripción del curso" required>
+                        <button type="submit">Registrar Curso</button>
+                    </form>
+
+                    <table id="tablaCursos" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </section>
+
+                <!-- Sección de Docentes -->
+                <section id="docentes">
+                    <h3>Gestión de Docentes</h3>
+                    <form id="formDocente" class="formulario">
+                        <input type="text" id="nombreDocente" placeholder="Nombre del Docente" required>
+                        <input type="text" id="apellidoDocente" placeholder="Apellido del Docente" required>
+                        <input type="email" id="correoDocente" placeholder="Correo del Docente" required>
+                        <input type="password" id="passwordDocente" placeholder="Password" required>
+
+                        <label>Cursos Asignados</label>
+                        <div id="cursosDocente" class="cursos-grid"></div>
+
+                        <button type="submit">Registrar Docente</button>
+                    </form>
+
+                    <table id="tablaDocentes" class="tabla">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo</th>
+                                <th>Cursos Asignados</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
     
     <script src="script-admin.js"></script>
     

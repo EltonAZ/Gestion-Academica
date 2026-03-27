@@ -1,23 +1,37 @@
 package com.colegio.colegio.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long docenteId;
 
-    private String email;
-    private String password;
-    private String rol; // admin, docente, estudiante
+    @Column(unique = true) // evita correos duplicados
+    private String email;//
+    private String password;//
+
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
+    // --- Constructores ---
+    public Usuario() {}
+    public Usuario(Long id, String email, String password, Rol rol) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.rol = rol;
+    }
+    // --- Getters y Setters ---
+
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -25,6 +39,7 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -32,14 +47,16 @@ public class Usuario {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
-    public void setRol(String rol) {
+
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 }
