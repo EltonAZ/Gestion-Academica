@@ -2,6 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const listaCursos = document.getElementById("listaCursos");
   const listaEstudiantes = document.getElementById("listaEstudiantes");
 
+  // Botón salir
+  document.getElementById("docenteSalir").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "index.html";
+  });
+
   // --- 1. Cargar cursos del docente ---
   const docenteId = localStorage.getItem("usuarioId");
   if (!docenteId) {
@@ -93,8 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return res.json();
       })
       .then(data => {
-        alert(`Notas guardadas para ${data.estudiante.nombre} en curso ${data.curso.nombre}. Promedio: ${data.promedio}`);
+        const toast = document.getElementById("toast");
+        toast.textContent = `Notas guardadas para ${data.estudiante.nombre} en curso ${data.curso.nombre}. Promedio: ${data.promedio}`;
+        toast.classList.add("show");
+
+        setTimeout(() => toast.classList.remove("show"), 3000);
       })
+
+
       .catch(err => alert(err.message));
     }
   });

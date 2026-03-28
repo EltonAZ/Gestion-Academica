@@ -6,30 +6,35 @@
     <title>Panel Docente</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="docente-panel">
-        <h2>Panel Docente</h2>
+<body class="docente-page">
+    <div class="docente-sidebar">
+        <h2>🎓 Docentes</h2>
+        <ul>
+            <li><a href="#" class="docente-active">Inicio</a></li>
+            <li><a href="#">Mis Cursos</a></li>
+            <li><a href="#">Estudiantes</a></li>
+        </ul>
+    </div>
+
+    <div class="docente-main">
+        <header class="docente-header">
+            <h2>Panel Docente</h2>
+            <button id="docenteSalir">Salir</button>
+        </header>
 
         <!-- Cursos asignados -->
         <section class="docente-cursos">
             <h3>Mis Cursos</h3>
-            <table class="tabla-cursos">
+            <table class="docente-tabla-cursos">
                 <thead>
                     <tr>
-                    <th>Curso</th>
-                    <th>Descripción</th>
-                    <th>Acciones</th>
+                        <th>Curso</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="listaCursos">
-                    <!-- Aquí se cargan los cursos del docente -->
-                    <!-- Ejemplo dinámico:
-                    <tr>
-                    <td>Matemáticas</td>
-                    <td>Álgebra básica</td>
-                    <td><button class="btn-ver-estudiantes" data-curso="1">Ver estudiantes</button></td>
-                    </tr>
-                    -->
+                <!-- Cursos dinámicos -->
                 </tbody>
             </table>
         </section>
@@ -37,7 +42,7 @@
         <!-- Estudiantes del curso seleccionado -->
         <section class="docente-estudiantes">
             <h3>Estudiantes del Curso</h3>
-            <table class="tabla-estudiantes">
+            <table class="docente-tabla-estudiantes">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -50,12 +55,12 @@
                     </tr>
                 </thead>
                 <tbody id="listaEstudiantes">
-                    
-                </tbody>
+                <!-- Estudiantes dinámicos -->
             </table>
         </section>
-        
     </div>
+
+    <div id="toast" class="toast"></div>
 
     <script src="script-docente.js"></script>
     

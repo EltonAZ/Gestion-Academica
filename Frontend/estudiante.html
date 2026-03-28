@@ -6,14 +6,28 @@
     <title>Panel Estudiante</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="estudiante-panel">
-        <h2>Panel Estudiante</h2>
+<body class="estudiante-page">
+    <!-- Barra lateral -->
+    <div class="estudiante-sidebar">
+        <h2>🎓 Estudiante</h2>
+        <ul>
+            <li><a href="#" class="estudiante-active">Inicio</a></li>
+            <li><a href="#">Mis Cursos</a></li>
+            <li><a href="#">Mis Notas</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="estudiante-main">
+        <header class="estudiante-header">
+            <h2>Panel Estudiante</h2>
+            <button id="estudianteSalir">Salir</button>
+        </header>
 
         <!-- Cursos inscritos -->
         <section class="estudiante-cursos">
-            <h3>Mis cursos</h3>
-            <table class="Tabla-cursos">
+            <h3>Mis Cursos</h3>
+            <table class="estudiante-tabla-cursos">
                 <thead>
                     <tr>
                         <th>Curso</th>
@@ -21,15 +35,16 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="listaCursosEstudiante"></tbody>
-                <!-- Aquí se cargan los cursos del estudiante -->
+                <tbody id="listaCursosEstudiante">
+                <!-- Cursos dinámicos -->
+                </tbody>
             </table>
         </section>
 
         <!-- Notas del curso seleccionado -->
         <section class="estudiante-notas">
             <h3>Mis Notas</h3>
-            <table class="tabla-notas">
+            <table class="estudiante-tabla-notas">
                 <thead>
                     <tr>
                         <th>Nota 1</th>
@@ -39,11 +54,11 @@
                     </tr>
                 </thead>
                 <tbody id="detalleNotas">
-                    <!-- Aquí se cargan las notas del curso -->
+                <!-- Notas dinámicas -->
                 </tbody>
             </table>
         </section>
-    </div>
+    </div>        
 
     <script src="script-estudiante.js"></script>
     

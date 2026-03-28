@@ -9,6 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Boton Salir
+  document.getElementById("estudianteSalir").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "index.html";
+  });
+
   // --- 2. Cargar cursos del estudiante ---
   fetch(`http://localhost:8080/estudiantes/${estudianteId}/cursos`)
     .then(res => {

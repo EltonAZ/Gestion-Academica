@@ -23,7 +23,8 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     // Limpiar mensaje de error si el login fue exitoso
     document.getElementById("errorMsg").textContent = "";
 
-    // Guardar ID del usuario en localStorage (para estudiante)
+    // Guardar sesión en localStorage
+    localStorage.setItem("usuarioActivo", data.email);
     localStorage.setItem("usuarioId", data.id);
 
     // Redirigir según el rol
@@ -41,22 +42,4 @@ document.getElementById("loginForm").addEventListener("submit", e => {
   });
 });
 
-
-
-//Validar el usuario y guardar sesion en localstogare
-// Esto es para usar el boton salir
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const correo = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-
-  // Usuario admin
-  if (correo === "admin@colegio.com" && password === "1234") {
-    localStorage.setItem("usuarioActivo", correo); // guarda sesión
-    window.location.href = "admin.html"; // redirige al panel
-  } else {
-    alert("Credenciales incorrectas");
-  }
-});
 

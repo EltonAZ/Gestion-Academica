@@ -92,62 +92,6 @@ body.login-page {
 }
 
 
-
-
-
-
-
-/*
-
-/* Contenedor exclusivo del login 
-.login-container {
-  max-width: 300px;
-  margin: 100px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  box-sizing: border-box; /* Evita que padding expanda el contenedor 
-} /*
-
-.login-container h2 {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #007bff;
-}
-
-/* Formularios dentro del login 
-.login-container form {
-    display: flex;
-    flex-direction: column; /* Inputs y boton en columna 
-    
-}
-
-.login-container input,
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Evita que el padding rompa el ancho 
-} 
-
-/* Botón del login 
-.login-container button {
-    background: #007BFF;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.login-container button:hover {
-    background: #0056b3;
-}            
-    */
-     
-
-
 /*  =========================
     Pagina Administrador
     =========================    */
@@ -169,12 +113,12 @@ body.admin-page {
 /* Sidebar */
 .sidebar {
     width: 240px;
-    background: linear-gradient(180deg, #6a11cb, #2575fc);
+    background: linear-gradient(180deg, #1e3a5f, #225ec6);
     color: #fff;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
 }
 .sidebar ul li a.active {
@@ -188,8 +132,6 @@ body.admin-page {
     text-align: center;
     border-bottom: 2px solid rgba(255,255,255,0.3);
     padding-bottom: 25px;
-
-
 }
 .sidebar ul {
     list-style: none;
@@ -235,6 +177,7 @@ body.admin-page {
     align-items: center;
     gap: 8px;
     justify-content: center;
+    margin-top: auto;
 }
 #btnSalir:hover {
     background: #cc0000;
@@ -268,32 +211,43 @@ header h1 {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
 
 }
 .admin-container h3 {
     margin-bottom: 20px;
     color: #444;
-    border-bottom: 2px solid #6a11cb;
+    border-bottom: 2px solid #1e3a5f;
     padding-bottom: 8px;
 }
 
 /* Formularios */
-.formulario input,
+.formulario input {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 10px;
+   
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.formulario input:focus {
+    border-color: #1e3a5f;
+    outline: none;
+}
 .formulario button {
     display: block;
     width: 100%;
     margin: 10px 0;
-    padding: 12px;
+    padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 14px;
-}
-.formulario input:focus {
-    border-color: #6a11cb;
-    outline: none;
-}
-.formulario button {
-    background: #6a11cb;
+    background: #1e3a5f;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -301,7 +255,7 @@ header h1 {
 
 }
 .formulario button:hover {
-    background: #2575fc;
+    background: #1f60cf;
 }
 
 /* Tablas */
@@ -317,7 +271,7 @@ header h1 {
     border-bottom: 1px solid #ddd;
 }
 .tabla th {
-    background: #6a11cb;
+    background: #1e3a5f;
     color: #fff;
 }
 
@@ -364,100 +318,148 @@ header h1 {
 
 
 
-
-
 /*  =========================
     Panel Docente
     =========================    */
-
-/* Contenedor principal */
-.docente-panel {
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 25px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.docente-page {
+    margin: 0;
+    display: flex;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
 }
 
-/* Títulos */
-.docente-panel h2 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 20px;
-  text-align: center;
+/* Barra lateral exclusiva docente */
+.docente-sidebar {
+    width: 220px;
+    background-color: #1e3a5f;
+    color: white;
+    padding: 20px;
+    height: 100vh;
 }
-.docente-panel h3 {
-  font-size: 1.4rem;
-  color: #34495e;
-  margin: 15px 0;
-  border-left: 4px solid #3498db;
-  padding-left: 8px;
+.docente-sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
 }
-
-/* Tablas generales */
-.docente-panel table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-  font-size: 0.95rem;
+.docente-sidebar ul {
+    list-style: none;
+    padding: 0;
 }
-.docente-panel th, 
-.docente-panel td {
-  border: 1px solid #e0e0e0;
-  padding: 10px;
-  text-align: center;
+.docente-sidebar ul li a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
 }
-.docente-panel th {
-  background: #3498db;
-  color: #fff;
-  font-weight: 600;
-}
-.docente-panel tr:nth-child(even) {
-  background: #f9f9f9;
+.docente-sidebar ul li a.docente-active,
+.docente-sidebar ul li a:hover {
+    background-color: #2e5c8a;
 }
 
-/* Botones */
-.docente-panel button {
-  background: #3498db;
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+/* Contenido principal exclusivo docente */
+.docente-main {
+    flex-grow: 1;
+    padding: 20px;
 }
-.docente-panel button:hover {
-  background: #2980b9;
+.docente-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
-
-/* Inputs de notas */
-.docente-panel input[type="number"] {
-  width: 70px;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  text-align: center;
-  font-size: 0.9rem;
+.docente-header h2 {
+    margin: 0;
+    font-size: 24px;
 }
-.docente-panel input[readonly] {
-  background: #f0f0f0;
-  color: #555;
+#docenteSalir {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Secciones */
-.docente-cursos, 
+.docente-cursos,
 .docente-estudiantes {
-  margin-bottom: 25px;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.docente-cursos h3,
+.docente-estudiantes h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #1e3a5f;
 }
 
-/* Animación suave al cargar */
-.docente-panel tbody tr {
-  transition: background 0.2s ease;
+/* Tablas exclusivas docente */
+.docente-tabla-cursos,
+.docente-tabla-estudiantes {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
 }
-.docente-panel tbody tr:hover {
-  background: #ecf6ff;
+.docente-tabla-cursos th,
+.docente-tabla-cursos td,
+.docente-tabla-estudiantes th,
+.docente-tabla-estudiantes td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.docente-tabla-cursos th,
+.docente-tabla-estudiantes th {
+    background-color: #1e3a5f;
+    color: white;
+}
+.docente-tabla-cursos tr:nth-child(even),
+.docente-tabla-estudiantes tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Botones exclusivos docente */
+.btn-ver-estudiantes {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-guardar-nota {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Toas flotante para dice que nota fue guardada */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #5cb85c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.toast.show {
+    opacity: 1;
 }
 
 
@@ -465,65 +467,123 @@ header h1 {
     Pagina Estudiante
     =========================    */
 
-/* --- Panel Estudiante --- */
-.estudiante-panel {
-    max-width: 900px;
-    margin: 30px auto;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+/* --- Body Estudiante --- */
+.estudiante-page {
+    margin: 0;
+    display: flex;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
 }
 
-/* Títulos */
-.estudiante-panel h2 {
-    color: #2c3e50;
+/* Barra lateral exclusiva estudiante */
+.estudiante-sidebar {
+    width: 220px;
+    background-color: #1e3a5f;
+    color: white;
+    padding: 20px;
+    height: 100vh;
+}
+.estudiante-sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+.estudiante-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.estudiante-sidebar ul li a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.estudiante-sidebar ul li a.estudiante-active,
+.estudiante-sidebar ul li a:hover {
+    background-color: #2e5c8a;
+}
+
+/* Contenido principal exclusivo estudiante */
+.estudiante-main {
+    flex-grow: 1;
+    padding: 20px;
+}
+.estudiante-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-    text-align: center;
-}
-.estudiante-panel h3 {
-    color: #34495e;
-    margin-bottom: 10px;
 }
 
-/* Tablas */
-.estudiante-panel table {
+.estudiante-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#estudianteSalir {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+/* Secciones */
+.estudiante-cursos,
+.estudiante-notas {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.estudiante-cursos h3,
+.estudiante-notas h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #1e3a5f;
+}
+
+/* Tablas exclusivas estudiante */
+.estudiante-tabla-cursos,
+.estudiante-tabla-notas {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
-.estudiante-panel thead {
-    background-color: #2c3e50;
-    color: #fff;
-}
-.estudiante-panel th,
-.estudiante-panel td {
+
+.estudiante-tabla-cursos th,
+.estudiante-tabla-cursos td,
+.estudiante-tabla-notas th,
+.estudiante-tabla-notas td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-/* Botones */
-.estudiante-panel button {
-    background-color: #3498db;
-    color: #fff;
+.estudiante-tabla-cursos th,
+.estudiante-tabla-notas th {
+    background-color: #1e3a5f;
+    color: white;
+}
+
+.estudiante-tabla-cursos tr:nth-child(even),
+.estudiante-tabla-notas tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Boton ver nota */
+.btn-ver-notas {
+    background-color: #337ab7;
+    color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s;
 }
-.estudiante-panel button:hover {
-    background-color: #2980b9;
-}
-
-/* Promedio destacado */
-.estudiante-panel .tabla-notas td:last-child {
-    font-weight: bold;
-    color: #27ae60;
-}
-
-
 
 
 
