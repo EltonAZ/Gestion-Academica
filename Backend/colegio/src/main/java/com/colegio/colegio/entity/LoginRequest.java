@@ -1,8 +1,8 @@
 package com.colegio.colegio.entity;
 
 public class LoginRequest {
-    private String email;
-    private String password;
+    private String email;      // Correo electrónico del usuario
+    private String password;   // Contraseña del usuario
 
     // getters y setters
 

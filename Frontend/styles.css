@@ -4,245 +4,381 @@
 
 /* Estilo general para todo el sistema */
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif; /* Fuente base */
+    background: #f4f4f4;          /* Color de fondo gris claro */
+    margin: 0;                      /* Elimina márgenes por defecto */
+    padding: 0;                     /* Elimina relleno por defecto */
 }
 
 
 /* =======================
 /*Estilos para el Body Login*/
 body.login-page {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Fuente específica para la página de login */
 }
 
+/* Imagen de fondo ocupa toda la pantalla */
 .login-wrapper {
-  display: flex;
-  width: 900px;
-  height: 500px; /* altura fija para balancear */
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  overflow: hidden;
-
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background: url('Images/portada-login.png') no-repeat center center; /* Imagen centrada */
+    background-size: cover; /* Escala la imagen para cubrir todo */
+    position: relative;
+    display: flex; /* Flexbox para alinear contenido */
+    justify-content: flex-end; /* Formulario alineado a la derecha */
+    align-items: center; /* Centrado vertical */
+    padding-right: 200px;  /* Espacio a la derecha */
 }
 
-/* Columna izquierda */
-.login-left {
-  flex: 1;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centra verticalmente */
-  align-items: center;     /* centra horizontalmente */
-  text-align: center;
 
+/* Overlay degradado en la parte derecha */
+.login-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* Ocupa todo el contenedor */
+    background: linear-gradient(to left, rgba(22, 44, 72, 0.899) 40%, transparent 100%);
+    pointer-events: none; /* No bloquea clics sobre el formulario */
 }
 
-/* Columna derecha */
-.login-right {
-  flex: 1;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centra verticalmente */
-}
-.login-right h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-.login-right input {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-.login-right input:focus {
-  border-color: #6a11cb;
+/* Formulario en columna */
+.login-form form {
+    display: flex; /* Flexbox para alinear contenido */
+    flex-direction: column; /* Los elementos se colocan uno debajo del otro */
 }
 
-.login-right button {
-  width: 100%;
-  padding: 12px;
-  background: #6a11cb;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
+/* Caja del formulario */
+.login-form {
+    position: relative;
+    background: rgba(21, 45, 75, 0.85); /* azul institucional semitransparente */
+    padding: 20px 30px 20px 30px;
+    border-radius: 25px; /* Bordes redondeados */
+    width: 350px;
+    color: #fff;  /* Texto blanco */       
+
+    /* Borde blanco completo */
+    border: 2px solid #57575795;
+
+    /* sombra blanca difusa */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.796);
 }
 
-.login-right button:hover {
-  background: #2575fc;
+/* Inputs y botones dentro del formulario */
+.login-form input,
+.login-form button {
+    width: 100%;            /* Ocupan todo el ancho */
+    box-sizing: border-box; /* asegura que padding y borde no rompan el ancho */
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;   
 }
+
+/* Botón de ingresar */
+.login-form button {
+    margin-top: 15px;
+    background: #ffd700;
+    color: #1e3a5f;
+    cursor: pointer; /* Sale una manito al pasar en boton */
+    font-weight: bold;
+    transition: background 0.3s;  /* Animación al pasar el mouse */    
+}
+
+/* Título del formulario */
+.login-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Etiquetas de los campos */
+.login-form label {
+    display: block; /* Ocupa todo su ancho */
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* Efecto hover en el botón */
+.login-form button:hover {
+    background: #ffcc00;
+}
+
+/* Mensaje de error */
 #errorMsg {
-  color: red;
-  margin-top: 10px;
+    margin-top: 10px;
+    color: #ff4d4d;
+    font-weight: bold;
+    text-align: center;
 }
+
+/* Grupo de inputs con ícono (correo y contraseña) */
+.input-group {
+    position: relative; /* Mantiene el lugar, sirve como referencia para hijos */
+    margin-bottom: 15px;
+}
+
+/* Ícono dentro del input */
+.input-group i {
+    position: absolute; /* Se posiciona respecto al contenedor mas cercano: Position: relative */
+    left: 12px;
+    top: 55%; /* Coloca el borde superior al 55% de la altura del contenedor de referencia */
+    transform: translateY(-55%); /* Ajusta la posición vertical del elemento moviéndolo hacia arriba un 55% */
+    color: #666;
+    font-size: 16px;
+}
+
+/* Input con espacio para ícono */
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* espacio para el ícono */
+    border-radius: 6px;
+    border: none;
+    box-sizing: border-box; /* Evita que el padding o borde aumenten el tamaño total. */
+    font-size: 14px;
+}
+
 
 
 /*  =========================
     Pagina Administrador
     =========================    */
+
 /* Estilo general de la página */
-/* General */
-
 body.admin-page {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: #f0f2f5;
+    margin: 0;                          /* Elimina márgenes por defecto */
+    font-family: 'Roboto', sans-serif;  /* Define tipografía moderna */
+    background: #f0f2f5;              /* Color de fondo gris claro */
 }
 
+/* Contenedor principal que envuelve sidebar y contenido */
 .admin-wrapper {
-    display: flex;
-    height: 100vh;
-
+    display: flex;  /* Coloca elementos en fila (sidebar + contenido) */
+    height: 100vh;  /* Ocupa toda la altura de la ventana */
 }
 
-/* Sidebar */
+/* Sidebar: menú lateral de navegación */
 .sidebar {
-    width: 240px;
-    background: linear-gradient(180deg, #1e3a5f, #225ec6);
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
-
+    width: 240px;                  /* Ancho fijo */
+    background: linear-gradient(180deg, #1e3a5f, #225ec6); /* Degradado institucional */
+    color: #fff;                /* Texto blanco */
+    padding: 20px;                /* Espaciado interno */
+    display: flex;                /* Flexbox para organizar elementos */
+    flex-direction: column;       /* Elementos en columna */
 }
+
+/* Logo dentro del sidebar */
+.logo-admin {
+    text-align: center;     /* Centra el logo */
+}
+.logo {
+    max-width: 100px;      /* Tamaño máximo del logo */
+    height: auto;          /* Ajusta proporción automáticamente */
+    display: inline-block;  
+}
+
+/* Estilo de enlaces activos en el menú */
 .sidebar ul li a.active {
-    background: rgba(255,255,255,0.3);
-    color: #ffd700;
-    font-weight: bold;
+    background: #ffcc00;    
+    font-weight: bold;      /* Texto en negrita */
+    color: black;
 }
+
+/* Estilo al pasar el mouse sobre enlaces */
+.sidebar ul li a:hover {
+    background: rgba(255,255,255,0.2); /* Fondo semitransparente */
+}
+
+/* Título dentro del sidebar */
 .sidebar h2 {
-    margin-bottom: 30px;
-    font-size: 22px;
-    text-align: center;
-    border-bottom: 2px solid rgba(255,255,255,0.3);
-    padding-bottom: 25px;
-}
+    margin-bottom: 30px;                     /* Espacio inferior */
+    font-size: 22px;                         /* Tamaño de fuente */
+    text-align: center;                      /* Centrado */
+    border-bottom: 2px solid rgba(255,255,255,0.3);  /* Línea decorativa */
+    padding-bottom: 25px;                    /* Espaciado inferior */
+} 
+
+/* Lista de navegación */
 .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
+    list-style: none;    /* Quita viñetas */
+    padding: 0;          /* Quita relleno */
+    margin: 0;           /* Quita márgenes */
+    
 }
-
 .sidebar ul li {
-    margin: 20px 0;
+    margin: 10px 0;     /* Espaciado entre elementos */
 }
+
+/* Íconos dentro de enlaces */
 .sidebar ul li a i {
     font-size: 18px;    /* tamaño uniforme de íconos */
     min-width: 20px;    /* reserva espacio para que todos queden alineados */
     text-align: center;
 }
 
+/* Estilo general de enlaces del menú */
 .sidebar ul li a {
     color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-    transition: background 0.3s, color 0.3s;
+    text-decoration: none;         /* Quita subrayado */
+    display: flex;                 /* Ícono + texto alineados */
+    align-items: center;           /* Centra verticalmente */
+    gap: 10px;                     /* Espacio entre ícono y texto */
+    padding: 10px 12px;            /* Relleno interno */
+    border-radius: 6px;            /* Bordes redondeados */
+    transition: background 0.3s, color 0.3s; /* Animación suave */
 }
-.sidebar ul li a:hover {
-    background: rgba(255,255,255,0.2);
-    color: #ffd700;
 
-}
+/* Botón de salir */
 #btnSalir {
     background: #ff4d4d;
-    color: #fff;
-    border: none;
-    padding: 12px;
+    color: #fff;                  /* Texto blanco */
+    border: none;                   /* Sin borde */
+    font-weight: 500;               /* Texto seminegrita */
+    padding: 12px;                  /* Espaciado interno */
     border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    cursor: pointer;                /* Cursor tipo mano */
+    transition: background 0.3s;    /* Animación al pasar mouse */
+    display: flex;                  /* Ícono + texto alineados */
+    align-items: center;            /* Alinea */
+    gap: 8px;                       /* Espacio uniforme entre elementos */
     justify-content: center;
-    margin-top: auto;
+    margin-top: auto;              /* Empuja el botón al final del sidebar */
 }
 #btnSalir:hover {
-    background: #cc0000;
+    background: #cc0000;         /* Rojo más oscuro al pasar el mouse */
 }
+
 
 /* Área principal */
 .main-content {
-    flex: 1;
+    flex: 1;                  /* Ocupa todo el espacio restante al lado del sidebar */
     padding: 30px;
     background: #f5f6fa;
-    overflow-y: auto;
-
+    overflow-y: auto;        /* Activa scroll vertical si el contenido es largo */
 }
+
+/* Encabezado dentro del área principal */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    display: flex;           /* Coloca elementos en fila (ej. título + botones) */
+    justify-content: space-between; /* Distribuye elementos a los extremos (izq y der) */
+    align-items: center;     /* Centra verticalmente los elementos */
+    margin-bottom: 30px;     /* Espacio inferior respecto al contenido siguiente */
 
 }
 header h1 {
-    font-size: 28px;
-    color: #333;
+    font-size: 28px; /* Tamaño grande para el título */
+    color: #333;   /* Color gris oscuro para contraste */
 
 }
 
-/* Contenedor de secciones */
+/* Contenedor de secciones dentro del área principal */
 .admin-container section {
-    margin-bottom: 40px;
+    margin-bottom: 40px;   /* Espacio entre secciones */
     background: #fff;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    
-
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave para dar relieve */
 }
 .admin-container h3 {
-    margin-bottom: 20px;
+    margin-bottom: 20px;          /* Espacio debajo del subtítulo */
     color: #444;
-    border-bottom: 2px solid #1e3a5f;
-    padding-bottom: 8px;
+    border-bottom: 2px solid #1e3a5f; /* Línea decorativa azul institucional */
+    padding-bottom: 8px;                /* Espacio entre texto y línea */
+}
+
+/* Subtítulos especiales para labels */
+label.subtitulo {
+    display: block;         /* Ocupa toda la línea */
+    font-size: 15px;        /* más grande que el label normal */
+    font-weight: bold;      /* Texto en negrita */
+    color: #102644;       
+    margin-top: 10px;       /* espacio arriba */
+    margin-bottom: 10px;    /* espacio abajo */
+    border-bottom: 2px solid #102644; /* línea decorativa */
+    padding-bottom: 5px;    /* Espacio entre texto y línea */
+    width: 150px;            /* Ancho fijo */
+}
+label.subtitulo2 {
+    /* Igual que subtitulo, sirve para otro tipo de etiquetas */
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: #102644;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #102644;
+    padding-bottom: 5px;
+    width: 150px; 
+}
+
+/* Botón Agregar Estudiante */
+#btnAgregarEstudiante {
+    background: #1e3a5f;       /* color institucional */
+    color: #fff;
+    border: none;                /* Sin borde */
+    padding: 10px 18px;          /* Espaciado interno */
+    border-radius: 6px;          /* Bordes redondeados */
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;           /* Texto en negrita */
+    transition: background 0.3s; /* Animación suave al pasar mouse */
+    float: right;              /* Se coloca alineado a la derecha */
+    margin-bottom: 15px;       /* espacio con la tabla */
+}
+
+/* Botón Agregar Curso */
+#btnAgregarCurso {
+    /* Igual estilo que el botón de estudiante */
+    background: #1e3a5f;       
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+    float: right;              
+    margin-bottom: 15px;       /* espacio con la tabla */
+}
+
+/* Botón Agregar Docente */
+#btnAgregarDocente {
+    background: #1e3a5f;       /* color institucional */
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+    float: right;              /* lo coloca a la derecha */
+    margin-bottom: 15px;       /* espacio con la tabla */
+}
+#btnAgregarEstudiante:hover {
+    background: #225ec6;       /* tono más claro al pasar el mouse */
 }
 
 /* Formularios */
 .formulario input {
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    margin: 10px 0;
-    font-size: 14px;
+    display: block;      /* Cada input ocupa toda la línea */
+    font-size: 14px;     /* Tamaño de texto */
+    margin: 10px 0;      /* Espacio arriba y abajo */
     padding: 10px;
    
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
+    margin-top: 4px;     /* Ajuste adicional arriba */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 6px;  /* Bordes redondeados */
+    
 }
 .formulario input:focus {
-    border-color: #1e3a5f;
-    outline: none;
+    border-color: #1e3a5f; /* Borde azul institucional al enfocarse */
+    outline: none;      /* Quita el borde por defecto del navegador */
 }
+
 .formulario button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
+    display: block;             /* Botón ocupa toda la línea */
+    width: 100%;                /* Se extiende al ancho completo */
+    margin: 10px 0;             /* Espacio arriba y abajo */
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
@@ -250,40 +386,54 @@ header h1 {
     background: #1e3a5f;
     color: #fff;
     border: none;
-    cursor: pointer;
-    transition: background 0.3s;
+    cursor: pointer;             /* Cursor tipo mano */
+    transition: background 0.3s; /* Animación suave al pasar mouse */
 
 }
 .formulario button:hover {
-    background: #1f60cf;
+    background: #1f60cf;   /* Azul más claro al pasar el mouse */
+}
+
+/* Formulario en dos columnas */
+.formulario {
+    display: grid;           /* Usa grid layout */
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 15px;               /* Espacio entre columnas */
+}
+
+/* Cursos en checkbox y botón ocupan todo el ancho */
+#cursosEstudiante,
+#cursosDocente,
+.formulario button {
+    grid-column: span 2;  /* Estos elementos se extienden a las dos columnas */
 }
 
 /* Tablas */
 .tabla {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    width: 100%;               /* Ocupa todo el ancho disponible */
+    border-collapse: collapse; /* Une bordes de celdas */
+    margin-top: 20px;          /* Espacio superior */
 
 }
 .tabla th, .tabla td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;                   /* Espaciado interno */
+    text-align: left;                /* Texto alineado a la izquierda */
+    border-bottom: 1px solid #ddd; /* Línea divisoria gris claro */
 }
 .tabla th {
-    background: #1e3a5f;
+    background: #1e3a5f;           /* Fondo azul institucional */
     color: #fff;
 }
 
 .tabla tr:nth-child(even) {
-    background: #f9f9f9;
+    background: #f9f9f9;   /* Color alterno para filas pares */
 }
 
 .tabla tr:hover {
-    background: #eef;
+    background: #eef;      /* Color azul claro al pasar el mouse */
 }
 
-/* Botones de acción dentro de tablas */
+/* Botones de acción dentro de tablas */  /*Aun no usado*/
 .btn-editar {
     background: #2575fc;
     color: #fff;
@@ -300,114 +450,188 @@ header h1 {
     border-radius: 4px;
     cursor: pointer;
 }
-.btn-editar:hover { background: #1a5edb; }
-.btn-eliminar:hover { background: #cc0000; }
+.btn-editar:hover { background: #1a5edb; }    /* Azul más oscuro al pasar mouse */
+.btn-eliminar:hover { background: #cc0000; }  /* Rojo más oscuro al pasar mouse */
 
-/*Para check box que lo genera el script */
+/* Para checkboxes generados por script */
 .opcion {
-  display: flex;
-  justify-content: space-between; /* nombre a la izquierda, checkbox a la derecha */
-  align-items: center;
-  margin-bottom: 6px;
+  display: flex;                  /* Ítem en fila */
+  justify-content: space-between; /* Texto a la izquierda, checkbox a la derecha */
+  align-items: center;            /* Centrado vertical */
+  margin-bottom: 6px;             /* Espacio inferior */
 }
 #cursosEstudiante input[type="checkbox"],
 #cursosDocente input[type="checkbox"] {
   display: block;
-  margin-left: auto;    /* empuja los checkboxes a la derecha */
+  margin-left: auto;    /* Empuja el checkbox a la derecha */
 }
+
+/* Modal Estudiantes */
+.modal {
+    display: none;                        /* Oculto por defecto */
+    position: fixed;                      /* Se fija en toda la pantalla */
+    z-index: 1000;                        /* Se coloca encima de otros elementos */
+    left: 0; top: 0;                      /* Posición inicial */
+    width: 100%; height: 100%;            /* Ocupa toda la ventana */
+    background-color: rgba(0,0,0,0.5);  /* Fondo semitransparente negro */
+}
+.modal-content {
+    background: #fff;
+    margin: 5% auto;            /* Centrado con margen superior */
+    padding: 20px;
+    width: 700px;               /* Ancho fijo */
+    max-width: 90%;             /* Máximo ancho relativo */
+    border-radius: 5px;         /* Bordes redondeados */
+}
+.close {
+    float: right;               /* Botón de cerrar a la derecha */
+    font-size: 20px;            /* Tamaño de texto grande */
+    cursor: pointer;            /* Cursor tipo mano */
+} 
+
+/* Modal para cursos */
+#curso-content {
+    margin: 10% auto;           /* Centrado con más espacio superior */
+}
+/* Modal para docentes */
 
 
 
 /*  =========================
     Panel Docente
     =========================    */
-.docente-page {
-    margin: 0;
-    display: flex;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f6f9;
+body.docente-page {
+    margin: 0;                           /* Elimina márgenes por defecto */
+    font-family: 'Segoe UI', sans-serif; /* Tipografía moderna */
+    background-color: #f4f6f9;         /* Fondo gris claro */
 }
 
 /* Barra lateral exclusiva docente */
-.docente-sidebar {
-    width: 220px;
-    background-color: #1e3a5f;
-    color: white;
-    padding: 20px;
-    height: 100vh;
+.docente-wrapper {
+    display: flex;    /* Sidebar + contenido en fila */
+    height: 100vh;    /* Ocupa toda la altura de la ventana */
 }
+.docente-sidebar {
+    width: 240px;                     /* Ancho fijo */
+    background: linear-gradient(180deg, #1e3a5f, #225ec6); /* Degradado azul institucional */
+    color: white;
+    padding: 20px;                    /* Espaciado interno */
+    display: flex;
+    flex-direction: column;           /* Elementos en columna */
+}
+
+/* Ícono representativo del docente */
+.docente-icon-container {
+    text-align: center;              /* Centra el ícono */
+}
+.docente-icon {
+    font-size: 100px;                /* Ícono grande */
+}
+
+/* Título dentro del sidebar */
 .docente-sidebar h2 {
     margin-bottom: 30px;
     font-size: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.3); /* Línea decorativa */
+    padding-bottom: 25px;
+    text-align: center;
 }
+
+/* Lista de navegación docente */
 .docente-sidebar ul {
-    list-style: none;
+    list-style: none;        /* Quita viñetas */
     padding: 0;
+    margin: 0;
+    flex-grow: 1;           /* Ocupa espacio disponible */
+}
+.docente-sidebar ul li {
+    margin: 4px;           /* Espaciado entre ítems */
 }
 .docente-sidebar ul li a {
-    display: block;
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 4px;
+    color: #fff;
+    text-decoration: none;          /* Quita subrayado */
+    font-weight: 500;               /* Texto seminegrita */
+    display: flex;                  /* Ícono + texto alineados */
+    align-items: center;            /* Centrado vertical */
+    gap: 10px;                      /* Espacio entre ícono y texto */
+    padding: 10px 12px;             /* Espaciado interno */
+    border-radius: 6px;              /* Bordes redondeados */
+    transition: background 0.3s, color 0.3s; /* Animación suave */
 }
-.docente-sidebar ul li a.docente-active,
 .docente-sidebar ul li a:hover {
-    background-color: #2e5c8a;
+    background-color: #2e5c8a;     /* Azul más oscuro al pasar mouse */
+}
+.docente-sidebar a.docente-active {
+    background-color: #2e5c8a;     /* Fondo azul para opción activa */
+}
+
+/* Botón salir exclusivo docente */
+#docenteSalir {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    gap: 8px;
+    justify-content: center;         /* Centra ícono + texto */
+   
+}
+#docenteSalir:hover {
+    background: #cc0000;          /* Rojo más oscuro al pasar mouse */
 }
 
 /* Contenido principal exclusivo docente */
 .docente-main {
-    flex-grow: 1;
+    flex: 1;                  /* Ocupa todo el espacio restante */
     padding: 20px;
+    background: #f5f6fa;
+    overflow-y: auto;         /* Scroll vertical si es necesario */
+    margin-top: 20px;         
 }
 .docente-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex;                   /* Título + acciones en fila */
+    justify-content: space-between;  /* Distribuye extremos */
+    align-items: center;             /* Centrado vertical */
+    margin-bottom: 30px;
 }
 .docente-header h2 {
     margin: 0;
-    font-size: 24px;
-}
-#docenteSalir {
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
+    font-size: 28px;   /* Título grande */
+    color: #333;     /* Texto gris oscuro */
 }
 
-/* Secciones */
+/* Secciones de cursos y estudiantes */
 .docente-cursos,
 .docente-estudiantes {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-bottom: 40px;                       /* Espacio inferior */
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* Sombra suave */
 }
 .docente-cursos h3,
 .docente-estudiantes h3 {
     margin-top: 0;
-    font-size: 18px;
-    color: #1e3a5f;
+    margin-bottom: 20px;
+    color: #444;
+    border-bottom: 2px solid #1e3a5f;
+    padding-bottom: 8px;
 }
 
 /* Tablas exclusivas docente */
 .docente-tabla-cursos,
 .docente-tabla-estudiantes {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+    width: 100%;                      /* Ocupan todo el ancho */
+    border-collapse: collapse;        /* Une bordes */
+    margin-top: 20px;
 }
 .docente-tabla-cursos th,
 .docente-tabla-cursos td,
 .docente-tabla-estudiantes th,
 .docente-tabla-estudiantes td {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -421,17 +645,18 @@ header h1 {
     background-color: #f9f9f9;
 }
 
+
 /* Botones exclusivos docente */
 .btn-ver-estudiantes {
-    background-color: #337ab7;
+    background-color: #337ab7;   /* Azul para acción de ver */
     color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
 }
-.btn-guardar-nota {
-    background-color: #5cb85c;
+.btn-guardar-nota { 
+    background-color: #5cb85c;  /* Verde para acción de guardar */
     color: white;
     border: none;
     padding: 6px 12px;
@@ -439,28 +664,37 @@ header h1 {
     cursor: pointer;
 }
 input[type="number"] {
-    width: 60px;
+    width: 60px;                 /* Campo pequeño para notas */
     padding: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-/* Toas flotante para dice que nota fue guardada */
+/* Toast flotante que confirma nota guardada */
 .toast {
-    position: fixed;
-    bottom: 20px;
+    position: fixed;                  /* Se fija en pantalla */
+    bottom: 20px;                     /* Esquina inferior derecha */
     right: 20px;
     background: #5cb85c;
     color: white;
     padding: 12px 20px;
     border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Sombra ligera */
+    opacity: 0;                       /* Oculto por defecto */
+    transition: opacity 0.5s ease;    /* Animación de aparición */
 }
 .toast.show {
-    opacity: 1;
+    opacity: 1;    /* Se muestra cuando se activa */
 }
+
+/* Resaltar el campo promedio */
+.resaltado {
+  background-color: #f0f0f0; /* gris claro */
+  font-weight: bold;
+  color: #333;
+  border: 1px solid #ccc;    /* Borde gris */
+}
+
 
 
 /*  =========================
@@ -468,90 +702,130 @@ input[type="number"] {
     =========================    */
 
 /* --- Body Estudiante --- */
-.estudiante-page {
-    margin: 0;
-    display: flex;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f6f9;
+body.estudiante-page {
+    margin: 0;                           /* Elimina márgenes por defecto */
+    font-family: 'Segoe UI', sans-serif; /* Tipografía moderna */
+    background-color: #f4f6f9;         /* Fondo gris claro */
 }
 
 /* Barra lateral exclusiva estudiante */
-.estudiante-sidebar {
-    width: 220px;
-    background-color: #1e3a5f;
-    color: white;
-    padding: 20px;
-    height: 100vh;
+.estudiante-wrapper {
+    display: flex;       /* Sidebar + contenido en fila */
+    height: 100vh;       /* Ocupa toda la altura de la ventana */
 }
+.estudiante-sidebar {
+    width: 240px;              /* Ancho fijo */
+    background: linear-gradient(180deg, #1e3a5f, #225ec6);
+    color: white;
+    padding: 20px;              
+    display: flex;
+    flex-direction: column;    /* Elementos en columna */
+}
+
+/* Ícono representativo del estudiante */
+.estudiante-icon-container {
+    text-align: center;
+}
+.estudiante-icon {
+    font-size: 100px;        /* Ícono grande */
+}
+
+/* Título dentro del sidebar */
 .estudiante-sidebar h2 {
     margin-bottom: 30px;
     font-size: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.3); /* Línea decorativa */
+    padding-bottom: 25px;
+    text-align: center;
 }
+
+/* Lista de navegación estudiante */
 .estudiante-sidebar ul {
-    list-style: none;
+    list-style: none;     /* Quita viñetas */
     padding: 0;
+    margin: 0;
+    flex-grow: 1;         /* Ocupa espacio disponible */
+}
+.estudiante-sidebar ul li {
+    margin: 4px;          /* Espaciado entre ítems */
 }
 .estudiante-sidebar ul li a {
-    display: block;
-    color: white;
+    color: white;           /* Texto blanco */
+    text-decoration: none;    /* Quita subrayado */
+    font-weight: 500;         /* Texto seminegrita */
+    display: flex;            /* Ícono + texto alineados */
+    align-items: center;      /* Centrado vertical */
     padding: 10px;
-    text-decoration: none;
-    border-radius: 4px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s; /* Animación suave */
 }
 .estudiante-sidebar ul li a.estudiante-active,
 .estudiante-sidebar ul li a:hover {
-    background-color: #2e5c8a;
-}
-
-/* Contenido principal exclusivo estudiante */
-.estudiante-main {
-    flex-grow: 1;
-    padding: 20px;
-}
-.estudiante-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.estudiante-header h2 {
-    margin: 0;
-    font-size: 24px;
+    background-color: #2e5c8a; /* Azul más oscuro al pasar mouse o activo */
 }
 
 #estudianteSalir {
     background-color: #d9534f;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;        /* Centra ícono + texto */
+    gap: 8px;                       /* Espacio entre ícono y texto */
+}
+#estudianteSalir:hover {
+    background: #cc0000;
 }
 
+/* Contenido principal exclusivo estudiante */
+.estudiante-main {
+    flex: 1;               /* Ocupa todo el espacio restante */
+    padding: 20px;         /* Espaciado interno */
+    background: #f5f6fa; 
+    overflow-y: auto;      /* Scroll vertical si es necesario */
+    margin-top: 20px;      /* Espacio superior */
+}
+.estudiante-header {
+    display: flex;                  /* Título + acciones en fila */
+    justify-content: space-between; /* Distribuye extremos */
+    align-items: center;            /* Centrado vertical */
+    margin-bottom: 30px;
+}
 
-/* Secciones */
+.estudiante-header h2 {
+    margin: 0;
+    font-size: 28px;       /* Título grande */
+    color: #333;        /* Texto gris oscuro */
+}
+
+/* Secciones de cursos y notas */
 .estudiante-cursos,
 .estudiante-notas {
     background-color: white;
     padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+    margin-bottom: 40px;
+    border-radius: 12px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .estudiante-cursos h3,
 .estudiante-notas h3 {
     margin-top: 0;
-    font-size: 18px;
-    color: #1e3a5f;
+    color: #444;                      /* Texto gris medio */
+    border-bottom: 2px solid #1e3a5f;
+    padding-bottom: 8px;
 }
 
 /* Tablas exclusivas estudiante */
 .estudiante-tabla-cursos,
 .estudiante-tabla-notas {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%;                /* Ocupan todo el ancho */
+    border-collapse: collapse;  /* Une bordes */
     margin-top: 10px;
 }
 
@@ -559,9 +833,9 @@ input[type="number"] {
 .estudiante-tabla-cursos td,
 .estudiante-tabla-notas th,
 .estudiante-tabla-notas td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 10px;                     /* Espaciado interno */
+    text-align: left;                 /* Texto alineado a la izquierda */
+    border-bottom: 1px solid #ddd; /* Línea divisoria gris claro */
 }
 
 .estudiante-tabla-cursos th,
@@ -572,45 +846,16 @@ input[type="number"] {
 
 .estudiante-tabla-cursos tr:nth-child(even),
 .estudiante-tabla-notas tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;    /* Color alterno para filas pares */
 }
 
 /* Boton ver nota */
 .btn-ver-notas {
-    background-color: #337ab7;
+    background-color: #337ab7;      /* Azul para acción de ver notas */
     color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

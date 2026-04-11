@@ -5,63 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Docente</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Librería de iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="docente-page">
-    <div class="docente-sidebar">
-        <h2>🎓 Docentes</h2>
-        <ul>
-            <li><a href="#" class="docente-active">Inicio</a></li>
-            <li><a href="#">Mis Cursos</a></li>
-            <li><a href="#">Estudiantes</a></li>
-        </ul>
-    </div>
+    <div class="docente-wrapper">
 
-    <div class="docente-main">
-        <header class="docente-header">
-            <h2>Panel Docente</h2>
-            <button id="docenteSalir">Salir</button>
-        </header>
+        <!-- Sidebar de navegación del docente -->
+        <aside class="docente-sidebar">
+            <!-- Icono/avatar del docente -->
+            <div class="docente-icon-container">
+                <i class="fas fa-user-circle docente-icon"></i>
+            </div>
 
-        <!-- Cursos asignados -->
-        <section class="docente-cursos">
-            <h3>Mis Cursos</h3>
-            <table class="docente-tabla-cursos">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Descripción</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="listaCursos">
-                <!-- Cursos dinámicos -->
-                </tbody>
-            </table>
-        </section>
+            <!-- Título dinámico que se reemplaza con el nombre del docente -->
+            <h2 id="docenteTitulo">Docente</h2>
 
-        <!-- Estudiantes del curso seleccionado -->
-        <section class="docente-estudiantes">
-            <h3>Estudiantes del Curso</h3>
-            <table class="docente-tabla-estudiantes">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Nota 3</th>
-                        <th>Promedio</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody id="listaEstudiantes">
-                <!-- Estudiantes dinámicos -->
-            </table>
-        </section>
-    </div>
+            <!-- Menú de navegación lateral -->
+            <ul>
+                <li><a href="#" class="docente-active">Inicio</a></li>
+                <li><a href="#cursos">Mis Cursos</a></li>
+                <li><a href="#estudiantes">Estudiantes</a></li>
+            </ul>
 
+            <!-- Botón para cerrar sesión -->
+            <button id="docenteSalir"><i class="fas fa-power-off"></i> Salir</button>
+        </aside>
+
+        <!-- Área principal del panel docente -->
+        <main class="docente-main">
+
+            <!-- Encabezado del panel -->
+            <header class="docente-header">
+                <h2>Panel Docente</h2>
+                <span>Bienvenido</span>
+            </header>
+
+            <!-- Sección de cursos asignados al docente -->
+            <section class="docente-cursos" id="cursos">
+                <h3>Mis Cursos</h3>
+                <!-- Tabla de cursos -->
+                <table class="docente-tabla-cursos">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Lista dinámica de cursos cargada desde JS -->
+                    <tbody id="listaCursos">
+                    <!-- Cursos dinámicos -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Estudiantes del curso seleccionado -->
+            <section class="docente-estudiantes" id="estudiantes">
+                <h3>Estudiantes del Curso</h3>
+                <!-- Tabla de estudiantes -->
+                <table class="docente-tabla-estudiantes">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Nota 3</th>
+                            <th>Promedio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Lista dinámica de estudiantes cargada desde JS -->
+                    <tbody id="listaEstudiantes">
+                        <!-- Estudiantes dinámicos -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>    
+
+    <!-- Toast para mostrar notificaciones (ejemplo: notas guardadas) -->
     <div id="toast" class="toast"></div>
 
+    <!-- Script JS que maneja la lógica del panel docente -->
     <script src="script-docente.js"></script>
     
 </body>

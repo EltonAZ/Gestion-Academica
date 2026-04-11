@@ -2,31 +2,35 @@ package com.colegio.colegio.entity;
 
 import jakarta.persistence.*;
 
+// Clase que representa la tabla "usuarios" en la base de datos
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long docenteId;
 
     @Column(unique = true) // evita correos duplicados
-    private String email;//
-    private String password;//
+    private String email;
+    private String password; // Contraseña del usuario
 
+    // Define que el campo Rol se guarda como texto (ej. "ADMIN", "DOCENTE", "ESTUDIANTE")
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
     // --- Constructores ---
-    public Usuario() {}
+    public Usuario() {} // Constructor vacío requerido por JPA
+
+    // Constructor con parámetros para inicializar objetos Usuario
     public Usuario(Long id, String email, String password, Rol rol) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.rol = rol;
     }
-    // --- Getters y Setters ---
 
+    // --- Getters y Setters ---
+    // Métodos para acceder y modificar atributos privados
 
     public Long getId() {
         return id;

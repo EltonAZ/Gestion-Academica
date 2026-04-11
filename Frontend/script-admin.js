@@ -44,6 +44,32 @@ document.querySelectorAll('.sidebar ul li a').forEach(link => {
     e.target.reset();
   });
 
+  // --- Control del Modal Estudiante ---
+  btnAgregarEstudiante.onclick = () => modalEstudiante.style.display = "block";
+  cerrarModal.onclick = () => modalEstudiante.style.display = "none";
+
+  // --- Control del Modal Curso ---
+  btnAgregarCurso.onclick = () => modalCurso.style.display = "block";
+  cerrarModalCurso.onclick = () => modalCurso.style.display = "none";
+
+  // --- Control del Modal Docente ---
+  btnAgregarDocente.onclick = () => modalDocente.style.display = "block";
+  cerrarModalDocente.onclick = () => modalDocente.style.display = "none";
+
+  // --- Listener global para cerrar modales al hacer clic fuera ---
+  window.addEventListener("click", (event) => {
+    if (event.target === modalEstudiante) {
+      modalEstudiante.style.display = "none";
+    }
+    if (event.target === modalCurso) {
+      modalCurso.style.display = "none";
+    }
+    if (event.target === modalDocente) {
+      modalDocente.style.display = "none";
+    }
+  });
+
+
 
   // --- Registrar Curso ---
   document.getElementById("formCurso").addEventListener("submit", e => {

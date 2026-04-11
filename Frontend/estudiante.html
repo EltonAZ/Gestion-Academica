@@ -5,61 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Estudiante</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body class="estudiante-page">
-    <!-- Barra lateral -->
-    <div class="estudiante-sidebar">
-        <h2>🎓 Estudiante</h2>
-        <ul>
-            <li><a href="#" class="estudiante-active">Inicio</a></li>
-            <li><a href="#">Mis Cursos</a></li>
-            <li><a href="#">Mis Notas</a></li>
-        </ul>
+    <div class="estudiante-wrapper">
+
+        <!-- Sidebar de navegación del estudiante -->
+        <aside class="estudiante-sidebar">
+
+            <!-- Icono/avatar del estudiante -->
+            <div class="estudiante-icon-container">
+                <i class="fas fa-user-circle estudiante-icon"></i>
+            </div>
+            <h2 id="estudianteTitulo">Estudiante</h2>
+
+            <!-- Menú de navegación lateral -->
+            <ul>
+                <li><a href="#" class="estudiante-active">Inicio</a></li>
+                <li><a href="#">Mis Cursos</a></li>
+                <li><a href="#">Mis Notas</a></li>
+            </ul>
+
+            <!-- Botón para cerrar sesión -->
+            <button id="estudianteSalir"><i class="fas fa-power-off"></i> Salir</button>
+        </aside>
+
+        <!-- Contenido principal del panel estudiante -->
+        <main class="estudiante-main">
+
+            <!-- Encabezado del panel -->
+            <header class="estudiante-header">
+                <h2>Panel Estudiante</h2>
+                <span>Bienvenido</span>
+            </header>
+
+            <!-- Sección de cursos inscritos -->
+            <section class="estudiante-cursos">
+                <h3>Mis Cursos</h3>
+
+                <!-- Tabla de cursos del estudiante -->
+                <table class="estudiante-tabla-cursos">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Lista dinámica de cursos cargada desde JS -->
+                    <tbody id="listaCursosEstudiante">
+                    <!-- Cursos dinámicos -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Sección de notas del curso seleccionado -->
+            <section class="estudiante-notas">
+                <h3>Mis Notas</h3>
+
+                <!-- Tabla de notas -->
+                <table class="estudiante-tabla-notas">
+                    <thead>
+                        <tr>
+                            <th>Nota 1</th>
+                            <th>Nota 2</th>
+                            <th>Nota 3</th>
+                            <th>Promedio</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Detalle dinámico de notas cargado desde JS -->
+                    <tbody id="detalleNotas">
+                    <!-- Notas dinámicas -->
+                    </tbody>
+                </table>
+            </section>
+        </main> 
+
     </div>
 
-    <!-- Contenido principal -->
-    <div class="estudiante-main">
-        <header class="estudiante-header">
-            <h2>Panel Estudiante</h2>
-            <button id="estudianteSalir">Salir</button>
-        </header>
-
-        <!-- Cursos inscritos -->
-        <section class="estudiante-cursos">
-            <h3>Mis Cursos</h3>
-            <table class="estudiante-tabla-cursos">
-                <thead>
-                    <tr>
-                        <th>Curso</th>
-                        <th>Descripción</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="listaCursosEstudiante">
-                <!-- Cursos dinámicos -->
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Notas del curso seleccionado -->
-        <section class="estudiante-notas">
-            <h3>Mis Notas</h3>
-            <table class="estudiante-tabla-notas">
-                <thead>
-                    <tr>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Nota 3</th>
-                        <th>Promedio</th>
-                    </tr>
-                </thead>
-                <tbody id="detalleNotas">
-                <!-- Notas dinámicas -->
-                </tbody>
-            </table>
-        </section>
-    </div>        
-
+    <!-- Toast para mostrar notificaciones (ejemplo: notas cargadas) -->
+    <div id="toast" class="toast"></div>
+    
     <script src="script-estudiante.js"></script>
     
     

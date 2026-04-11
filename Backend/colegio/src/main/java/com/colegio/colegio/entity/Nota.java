@@ -3,6 +3,7 @@ package com.colegio.colegio.entity;
 import com.colegio.colegio.repository.EstudianteRepository;
 import jakarta.persistence.*;
 
+// Clase que representa la tabla "notas" en la base de datos
 @Entity
 @Table(name = "notas")
 public class Nota {
@@ -11,14 +12,15 @@ public class Nota {
     private long id;
 
     // Relaciones con Estudiante y Curso
-    @ManyToOne
-    @JoinColumn(name = "estudiante_id", nullable = false)
+    @ManyToOne //Muchos a uno: Muchas notas puedes pertenecer a un Estudiante
+    @JoinColumn(name = "estudiante_id", nullable = false) // Columna foránea en la tabla notas que apunta al estudiante
     private Estudiante estudiante;
 
-    @ManyToOne
-    @JoinColumn(name = "curso_id", nullable = false)
+    @ManyToOne // Muchos registros de Nota pueden pertenecer a un mismo Curso
+    @JoinColumn(name = "curso_id", nullable = false) //Columna foranea en notas que apunta al curso
     private Curso curso;
 
+    // Campos para almacenar las notas individuales y el promedio
     private Double nota1;
     private Double nota2;
     private Double nota3;
@@ -26,12 +28,13 @@ public class Nota {
 
     // --- Método para calcular promedio ---
     public void calcularPromedio() {
+        // Si las tres notas no son nulas, se calcula el promedio
         if (nota1 != null && nota2 != null && nota3 != null) {
             this.promedio = (nota1 + nota2 + nota3) / 3.0;
         }
     }
 
-    //Getters y Setters
+    // --- Getters y Setters ---
 
     public long getId() {
         return id;

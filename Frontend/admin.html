@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel Administrador</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Librería de iconos Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<!-- Clase para estilos al panel administrador-->
 <body class="admin-page">
+
     <div class="admin-wrapper">
-        <!-- Sidebar -->
+        <!-- Sidebar de navegación -->
         <aside class="sidebar">
+            
+            <!-- Caja para el Logo institucional -->
+            <div class="logo-admin">
+                <img src="./Images/Colegio Logo.png" alt="Logo Institucional" class="logo">
+            </div>
             <h2>Sistema Académico</h2>
+
+            <!-- Menú de navegación lateral -->
             <ul>
                 <li><a href="#estudiantes" class="active"><i class="fas fa-user-graduate"></i>Estudiantes</a></li>
                 <li><a href="#docentes"><i class="fas fa-chalkboard-teacher"></i>Docentes</a></li>
@@ -19,54 +29,68 @@
                 <li><a href="#notas"><i class="fas fa-clipboard-list"></i>Notas</a></li>
                 <li><a href="#config"><i class="fas fa-cog"></i>Configuración</a></li>
             </ul>
+
+            <!-- Botón para cerrar sesión -->
             <button id="btnSalir"><i class="fas fa-power-off"></i> Salir</button>
         </aside>
 
 
-        <!-- Area Principal -->
+        <!-- Área principal del panel -->
         <main class="main-content">
+            <!-- Encabezado (Header) del panel -->
             <header>
                 <h1>Panel del Administrador</h1>
                 <span>Bienvenido, Admin</span>
             </header>
 
             <div class="admin-container">                
-                <!--Seccion de Estudiantes-->
+                <!-- Sección de Estudiantes -->
                 <section id="estudiantes">
                     <h3>Gestión de Estudiantes</h3>
-                    <form id="formEstudiante" class="formulario">
-                        <input type="text" id="nombreEstudiante" placeholder="Nombre" required>
-                        <input type="text" id="apellidoEstudiante" placeholder="Apellido" required>
-                        <input type="email" id="correoEstudiante" placeholder="Correo" required>
-                        <input type="password" id="passwordEstudiante" placeholder="Password" required>
-
-                        <label for="">Cursos</label>
-                        <div id="cursosEstudiante" class="cursos-grid"></div>
-
-                        <button type="submit">Registrar Estudiante</button>
-                    </form>
-
+                    <!-- Botón para abrir modal de registro Estuiante -->
+                    <button id="btnAgregarEstudiante">Agregar Estudiante</button>
+                    
+                    <!-- Tabla de estudiantes -->
                     <table id="tablaEstudiantes" class="tabla">
                         <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Correo</th>
-                            <th>Cursos Asignados</th>
-                        </tr>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo</th>
+                                <th>Cursos Asignados</th>
+                            </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </section>
 
+                <!-- Ventana modal para registrar estudiante-->
+                <div id="modalEstudiante" class="modal">
+                    <div class="modal-content">
+                        <!-- Botón cerrar modal -->
+                        <span class="close" id="cerrarModal">&times;</span>
+                        <h3>Registrar Estudiante</h3>
+                        <!-- Formulario de registro de estudiante -->
+                        <form id="formEstudiante" class="formulario">
+                            <input type="text" id="nombreEstudiante" placeholder="Nombre" required>
+                            <input type="text" id="apellidoEstudiante" placeholder="Apellido" required>
+                            <input type="email" id="correoEstudiante" placeholder="Correo" required>
+                            <input type="password" id="passwordEstudiante" placeholder="Password" required>
+
+                            <!-- Cursos disponibles para asignar -->
+                            <label for="" class="subtitulo">Asignar Cursos</label>
+                            <div id="cursosEstudiante" class="cursos-grid"></div>
+                            <!-- Boton registrar Estudiante-->
+                            <button type="submit">Registrar Estudiante</button>
+                        </form>
+                    </div>
+                </div>
+
                 <!-- Sección de Cursos-->
                 <section id="cursos">
                     <h3>Gestión de Cursos</h3>
-                    <form id="formCurso" class="formulario">
-                        <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
-                        <input type="text" id="descripcionCurso" placeholder="Descripción del curso" required>
-                        <button type="submit">Registrar Curso</button>
-                    </form>
+                    <!-- Botón para abrir modal -->
+                    <button id="btnAgregarCurso">Agregar Curso</button>                    
 
                     <table id="tablaCursos" class="tabla">
                         <thead>
@@ -79,21 +103,30 @@
                     </table>
                 </section>
 
+                <!-- Ventana Modal para registrar curso -->
+                <div id="modalCurso" class="modal">
+                    <div class="modal-content" id="curso-content">
+                        <!-- Botón cerrar modal -->
+                        <span class="close" id="cerrarModalCurso">&times;</span>
+                        <h3>Registrar Curso</h3>
+                        <!-- Formulario de registro de curso -->
+                        <form id="formCurso" class="formulario">
+                            <input type="text" id="nombreCurso" placeholder="Nombre del curso" required>
+                            <input type="text" id="descripcionCurso" placeholder="Descripción del curso" required>
+                            
+                            <!-- Boton de registrar curso-->
+                            <button type="submit">Registrar Curso</button>
+                        </form>
+                    </div>
+                </div>
+
                 <!-- Sección de Docentes -->
                 <section id="docentes">
                     <h3>Gestión de Docentes</h3>
-                    <form id="formDocente" class="formulario">
-                        <input type="text" id="nombreDocente" placeholder="Nombre del Docente" required>
-                        <input type="text" id="apellidoDocente" placeholder="Apellido del Docente" required>
-                        <input type="email" id="correoDocente" placeholder="Correo del Docente" required>
-                        <input type="password" id="passwordDocente" placeholder="Password" required>
+                    <!-- Botón para abrir modal de registro -->
+                    <button id="btnAgregarDocente">Agregar Docente</button>
 
-                        <label>Cursos Asignados</label>
-                        <div id="cursosDocente" class="cursos-grid"></div>
-
-                        <button type="submit">Registrar Docente</button>
-                    </form>
-
+                    <!-- Tabla de docentes -->
                     <table id="tablaDocentes" class="tabla">
                         <thead>
                             <tr>
@@ -106,9 +139,33 @@
                         <tbody></tbody>
                     </table>
                 </section>
+
+                <!-- Ventana Modal para registrar docente -->
+                <div id="modalDocente" class="modal">
+                    <div class="modal-content">
+                        <!-- Botón cerrar modal -->
+                        <span class="close" id="cerrarModalDocente">&times;</span>
+                        <h3>Registrar Docente</h3>
+
+                        <!-- Formulario de registro de docente -->
+                        <form id="formDocente" class="formulario">
+                            <input type="text" id="nombreDocente" placeholder="Nombre del Docente" required>
+                            <input type="text" id="apellidoDocente" placeholder="Apellido del Docente" required>
+                            <input type="email" id="correoDocente" placeholder="Correo del Docente" required>
+                            <input type="password" id="passwordDocente" placeholder="Password" required>
+
+                            <!-- Cursos disponibles para asignar -->
+                            <label class="subtitulo2">Asignar Curso</label>
+                            <div id="cursosDocente" class="cursos-grid"></div>
+                            <!-- Boton para registrar Docente-->
+                            <button type="submit">Registrar Docente</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </main>
     
+    <!-- Script JS que maneja la lógica del panel administrador -->
     <script src="script-admin.js"></script>
     
 </body>

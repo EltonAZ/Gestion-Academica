@@ -1,15 +1,15 @@
 package com.colegio.colegio.controller;
 
-import com.colegio.colegio.entity.Curso;
-import com.colegio.colegio.entity.Estudiante;
-import com.colegio.colegio.entity.LoginRequest;
-import com.colegio.colegio.entity.Nota;
+import com.colegio.colegio.entity.*;
 import com.colegio.colegio.repository.CursoRepository;
 import com.colegio.colegio.repository.EstudianteRepository;
 import com.colegio.colegio.repository.NotaRepository;
+import com.colegio.colegio.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @RestController
@@ -22,8 +22,12 @@ public class EstudianteController {
 
     @Autowired
     private CursoRepository cursoRepo;
+
     @Autowired
     private NotaRepository notaRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepo;
 
     @GetMapping
     public List<Estudiante> listar() {
@@ -35,11 +39,22 @@ public class EstudianteController {
     public Estudiante registrar(@RequestBody Estudiante estudiante) {
         if (estudiante.getCursos() != null) {
             List<Curso> cursos = estudiante.getCursos().stream()
-                    .map(c -> cursoRepo.findById(c.getId())
-                            .orElseThrow(() -> new RuntimeException("Curso no encontrado: " + c.getId())))
+                    .map(c -> cursoRepo.findById(c.getId()).orElse(null))
+                    .filter(c -> c != null)
                     .toList();
             estudiante.setCursos(cursos);
         }
+
+        // Crear usuario vinculado
+        Usuario usuario = new Usuario();
+        usuario.setEmail(estudiante.getEmail());
+        usuario.setPassword(estudiante.getPassword());
+        usuario.setRol(Rol.ESTUDIANTE);
+        usuarioRepo.save(usuario);
+
+        // Vincular usuario al estudiante
+        estudiante.setUsuario(usuario);
+
         return estudianteRepo.save(estudiante);
     }
 
@@ -71,11 +86,25 @@ public class EstudianteController {
 
     // --- Notas de un estudiante en un curso ---
     @GetMapping("/{estudianteId}/cursos/{cursoId}/notas")
-    public Nota obtenerNotasEstudiante(
+    public EstudianteConNotasDTO obtenerNotasEstudiante(
             @PathVariable Long estudianteId,
             @PathVariable Long cursoId) {
-        return notaRepository.findByCursoIdAndEstudianteId(cursoId, estudianteId)
+        Nota nota = notaRepository.findByCursoIdAndEstudianteId(cursoId, estudianteId)
                 .orElseThrow(() -> new RuntimeException("Notas no encontradas"));
+
+        Estudiante estudiante = nota.getEstudiante();
+
+        EstudianteConNotasDTO dto = new EstudianteConNotasDTO();
+        dto.setId(estudiante.getId());
+        dto.setNombre(estudiante.getNombre());
+        dto.setApellido(estudiante.getApellido());
+        dto.setEmail(estudiante.getEmail());
+        dto.setNota1(nota.getNota1());
+        dto.setNota2(nota.getNota2());
+        dto.setNota3(nota.getNota3());
+        dto.setPromedio(BigDecimal.valueOf(nota.getPromedio()).setScale(2, RoundingMode.HALF_UP));
+
+        return dto;
     }
 
     //
@@ -95,6 +124,12 @@ public class EstudianteController {
         respuesta.setApellido(estudiante.getApellido());
         respuesta.setEmail(estudiante.getEmail());
         return respuesta;
+    }
+
+    @GetMapping("/{id}")
+    public Estudiante obtenerEstudiante(@PathVariable Long id) {
+        return estudianteRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
     }
 
 

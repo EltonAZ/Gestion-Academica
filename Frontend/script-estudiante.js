@@ -3,11 +3,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const detalleNotas = document.getElementById("detalleNotas");
 
   // --- 1. Obtener el ID del estudiante desde login ---
-  const estudianteId = localStorage.getItem("usuarioId");
-  if (!estudianteId) {
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  if (!usuarioActivo || !usuarioActivo.id) {
     alert("No se encontró el estudiante logueado. Por favor inicia sesión.");
+    window.location.href = "index.html";
     return;
   }
+  const estudianteId = usuarioActivo.id;
+
+  // --- 2. Mostrar nombre y apellido del estudiante ---
+  document.getElementById("estudianteTitulo").textContent =
+    `${usuarioActivo.nombre} ${usuarioActivo.apellido}`;
 
   // Boton Salir
   document.getElementById("estudianteSalir").addEventListener("click", () => {

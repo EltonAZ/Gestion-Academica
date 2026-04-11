@@ -1,8 +1,6 @@
-
 /*  ===============================
     Pagina index 
     ===============================   */
-// Captura el evento "submit" del formulario de login
 document.getElementById("loginForm").addEventListener("submit", e => {
   e.preventDefault();
   const usuario = {
@@ -10,6 +8,7 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     password: document.getElementById("loginPassword").value
   };
 
+  // Llamar al endpoint general de usuarios
   fetch("http://localhost:8080/usuarios/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -20,26 +19,41 @@ document.getElementById("loginForm").addEventListener("submit", e => {
     return res.json();
   })
   .then(data => {
-    // Limpiar mensaje de error si el login fue exitoso
     document.getElementById("errorMsg").textContent = "";
 
     // Guardar sesión en localStorage
-    localStorage.setItem("usuarioActivo", data.email);
-    localStorage.setItem("usuarioId", data.id);
+    localStorage.setItem("usuarioActivo", JSON.stringify(data));
 
     // Redirigir según el rol
     if (data.rol === "ADMIN") {
       window.location.href = "admin.html";
     } else if (data.rol === "DOCENTE") {
-      window.location.href = "docente.html";
-    } else {
-      window.location.href = "estudiante.html";
+      // Aquí hacemos un segundo fetch al login de docentes
+      return fetch("http://localhost:8080/docentes/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(usuario)
+      })
+      .then(res => res.json())
+      .then(docente => {
+        localStorage.setItem("usuarioActivo", JSON.stringify(docente));
+        window.location.href = "docente.html";
+      });
+    } else if (data.rol === "ESTUDIANTE") {
+      // Aquí hacemos un segundo fetch al login de estudiantes
+      return fetch("http://localhost:8080/estudiantes/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(usuario)
+      })
+      .then(res => res.json())
+      .then(estudiante => {
+        localStorage.setItem("usuarioActivo", JSON.stringify(estudiante));
+        window.location.href = "estudiante.html";
+      });
     }
   })
   .catch(err => {
-    // Mostrar error en el párrafo
     document.getElementById("errorMsg").textContent = err.message;
   });
 });
-
-

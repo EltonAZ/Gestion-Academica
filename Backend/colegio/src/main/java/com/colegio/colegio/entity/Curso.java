@@ -5,19 +5,21 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
+// Clase que representa la tabla "cursos" en la base de datos
 @Entity
 @Table(name = "cursos")
 public class Curso {
-    @Id
+    @Id //Clave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    // Atributos básicos del curso
     private String nombre;
     private String descripcion;
 
     // Relación inversa muchos a muchos con estudiantes
-    @ManyToMany(mappedBy = "cursos")
-    @JsonIgnoreProperties("cursos")
+    @ManyToMany(mappedBy = "cursos") // "mappedBy" indica que la relación está definida en la entidad Estudiante
+    @JsonIgnoreProperties("cursos") // Evita ciclos infinitos al serializar
     private List<Estudiante> estudiantes;
 
     // Relación inversa muchos a muchos con docentes
@@ -27,10 +29,15 @@ public class Curso {
 
     // --- Constructores ---
 
+    // Constructor con ID
     public Curso(Long id) {
         this.id = id;
     }
+
+    // Constructor vacío requerido por JPA
     public Curso() {}
+
+    //
     public Curso(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;

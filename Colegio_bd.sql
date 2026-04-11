@@ -9,19 +9,24 @@ select * From docentes;
 select * From estudiante_curso;
 select * From docente_curso;
 
-INSERT INTO usuario (email, password, rol) VALUES 
-('admin@colegio.com', '123', 'admin'),
-('docente@colegio.com', '123', 'docente'),
-('juan.perez@colegio.com', '123', 'estudiante');
-
+-- Creamos usuario:
+-- Creando Administrador
 INSERT INTO usuarios (email, password, rol) VALUES 
-('elton@colegio.com', '1234', 'ESTUDIANTE');
+('admin@sandaniel.edu', 'admin', 'ADMIN'); 
+
+
+-- Creamos un estudiante
+INSERT INTO estudiantes (id, nombre, apellido, email, password)
+VALUES (5, 'Carlos', 'Ramírez', 'nuevo@colegio.com', '1234');
+
+-- Asignar curso
+INSERT INTO estudiante_curso (estudiante_id, curso_id) VALUES (5, 1);
 
 DELETE FROM docentes 
 WHERE id = 3;
 
 DELETE FROM docente_curso 
-WHERE id = 6 AND id= 3;
+WHERE docente_id = 3 AND curso_id= 2;
 
 
 show tables;
